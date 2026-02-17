@@ -139,7 +139,7 @@ class ClientesController extends Controller
                     $q->select('id', 'nombre');
                 },
                 'direccionesFiscales.estado' => function ($q) {
-                    $q->select('id', 'nombre', 'regi    on_id');
+                    $q->select('id', 'nombre', 'region_id');
                 },
                 'direccionesFiscales.estado.region' => function ($q) {
                     $q->select('id', 'nombre');
