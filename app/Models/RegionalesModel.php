@@ -9,6 +9,7 @@ class RegionalesModel extends Model
     protected $table = 'cli_regionales';
 
     protected $fillable = [
+        'id',
         'nombre',
         'apellido_paterno',
         'apellido_materno',

@@ -49,6 +49,11 @@ class ClientesModel extends Model
         return $this->hasMany(ClientesModel::class, 'matriz_id');
     }
 
+    public function distribuidor()
+    {
+        return $this->belongsTo(ClientesModel::class, 'distribuidor_id');
+    }
+
     // Un cliente pertenece a un regimen fiscal
     public function regimenFiscal()
     {
@@ -91,8 +96,13 @@ class ClientesModel extends Model
         return $this->belongsToMany(
             RegionalesModel::class,
             'cli_regional_distribuidor',
-            'regional_id',
             'distribuidor_id',
+            'regional_id'
+        )->select(
+            'cli_regionales.id',
+            'cli_regionales.nombre',
+            'cli_regionales.apellido_paterno',
+            'cli_regionales.apellido_materno'
         );
     }
 
@@ -104,6 +114,10 @@ class ClientesModel extends Model
             'cli_distribuidor_modelos',
             'distribuidor_id',
             'id_modelo',
+        )->select(
+            'wms_linea_producto.idlineaproducto',
+            'wms_linea_producto.cve_linea_producto',
+            'wms_linea_producto.descripcion',
         );
     }
 

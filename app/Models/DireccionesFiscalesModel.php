@@ -8,6 +8,24 @@ class DireccionesFiscalesModel extends Model
 {
     protected $table = 'cli_distribuidor_direcciones_fiscales';
 
+    protected $fillable = [
+        'id',
+        'distribuidor_id',
+        'tipo',
+        'calle',
+        'numero_ext',
+        'numero_int',
+        'colonia',
+        'codigo_postal',
+        'pais_id',
+        'estado_id',
+        'municipio_id',
+        'latitud',
+        'longitud',
+        'fecha_registro',
+        'estado',
+    ];
+
     public function distribuidor()
     {
         return $this->belongsTo(ClientesModel::class, 'distribuidor_id');

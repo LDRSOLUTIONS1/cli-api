@@ -13,10 +13,12 @@ class ModelosModel extends Model
     protected $keyType = 'string';
 
     protected $fillable = [
+        'idlineaproducto',
         'cve_lenea_producto',
         'descripcion',
         'fecha_creacion',
         'estado',
+        'marca_id',
     ];
 
     // Una marca tiene muchos clientes

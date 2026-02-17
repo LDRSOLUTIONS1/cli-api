@@ -8,6 +8,24 @@ class ContactosModel extends Model
 {
     protected $table = 'cli_contactos';
 
+    protected $fillable = [
+        'id',
+        'distribuidor_id',
+        'puesto_id',
+        'nombre',
+        'correo',
+        'extension',
+        'telefono',
+        'estatus',
+        'fecha_registro',
+        'estado',
+    ];
+
+    protected $hidden = [
+        'fecha_registro',
+        'estado',
+    ];
+
     // Un contacto pertenece a un distribuidor
     public function distribuidor()
     {

@@ -11,6 +11,15 @@ class PuestosModel extends Model
 
     protected $table = 'cli_puestos';
 
+    protected $fillable = [
+        'id',
+        'departamento_id',
+        'nombre',
+        'descripcion',
+        'fecha_registro',
+        'estado',
+    ];
+
     //Un puesto tiene un departamento
     public function departamento()
     {
