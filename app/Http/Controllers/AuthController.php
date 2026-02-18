@@ -36,10 +36,17 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         $user = $request->user();
-
         return response()->json([
             'message' => 'Usuario autenticado',
-            'user'    => $user
+            'user' => [
+                'idusuario' => $user->idusuario,
+                'numcolaborador' => $user->numcolaborador,
+                'nombres' => $user->nombres,
+                'apellidos' => $user->apellidos,
+                'telefono' => $user->telefono,
+                'email_user' => $user->email_user,
+                'rolid' => $user->rolid,
+            ]
         ], 200);
     }
 }

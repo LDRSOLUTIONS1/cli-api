@@ -11,30 +11,48 @@ class ClientesController extends Controller
     public function index()
     {
         try {
-            $clientes = ClientesModel::select(
-                'id',
-                'tipo_persona',
-                'nombre_fisica',
-                'apellido_paterno',
-                'apellido_materno',
-                'fecha_nacimiento',
-                'correo',
-                'curp',
-                'razon_social',
-                'representante_legal',
-                'domicilio_fiscal',
-                'rfc',
-                'nombre_comercial',
-                'repve',
-                'plaza',
-                'clasificacion',
-                'estatus',
-                'tipo_negocio',
-                'telefono',
-                'telefono_alt',
-                'fecha_registro',
-                'estado'
-            )->get();
+            $clientes = ClientesModel::with([
+                'grupo:id,nombre',
+                'direcciones' => function ($q) {
+                    $q->select('id', 'distribuidor_id', 'estado_id');
+                },
+                'direcciones.estado' => function ($q) {
+                    $q->select('id', 'nombre', 'region_id');
+                },
+                'direcciones.estado.region' => function ($q) {
+                    $q->select('id', 'nombre');
+                }
+
+            ])
+                ->select(
+                    'id',
+                    'grupo_id',
+                    'razon_social',
+                    'nombre_comercial',
+                    'plaza',
+                    'tipo_negocio',
+                    'estado'
+                )
+                ->get()
+                ->map(function ($cliente) {
+
+                    $region = optional(
+                        optional(
+                            optional($cliente->direcciones->first())->estado
+                        )->region
+                    )->nombre;
+
+                    return [
+                        'id' => $cliente->id,
+                        'grupo' => $cliente->grupo->nombre ?? null,
+                        'razon_social' => $cliente->razon_social,
+                        'nombre_comercial' => $cliente->nombre_comercial,
+                        'plaza' => $cliente->plaza,
+                        'tipo_negocio' => $cliente->tipo_negocio,
+                        'estado' => $cliente->estado,
+                        'region' => $region,
+                    ];
+                });
 
             return response()->json($clientes, 200);
         } catch (\Exception $e) {
