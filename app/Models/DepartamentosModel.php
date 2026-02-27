@@ -7,9 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DepartamentosModel extends Model
 {
-    use HasFactory;
-
     protected $table = 'cli_departamentos';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
@@ -18,4 +17,9 @@ class DepartamentosModel extends Model
         'fecha_registro',
         'estado',
     ];
+
+    public function puestos()
+    {
+        return $this->hasMany(PuestosModel::class, 'departamento_id');
+    }
 }

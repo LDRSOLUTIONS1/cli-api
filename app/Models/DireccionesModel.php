@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class DireccionesModel extends Model
 {
     protected $table = 'cli_distribuidor_direcciones';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EstadoModel extends Model
 {
     protected $table = 'cli_estados';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',

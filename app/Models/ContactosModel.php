@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ContactosModel extends Model
 {
     protected $table = 'cli_contactos';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
@@ -36,5 +37,11 @@ class ContactosModel extends Model
     public function puesto()
     {
         return $this->belongsTo(PuestosModel::class, 'puesto_id');
+    }
+
+    // Un contacto pertenece a un distribuidor
+    public function clientes()
+    {
+        return $this->belongsTo(ClientesModel::class, 'distribuidor_id');
     }
 }

@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\ContactosModel;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Http\Request;
+
+class ContactosController extends Controller
+{
+    public function index()
+    {
+        $modelos = ContactosModel::select(
+            'id',
+            'distribuidor_id',
+            'puesto_id',
+            'nombre',
+            'correo',
+            'extension',
+            'telefono',
+            'estatus',
+            'fecha_registro',
+            'estado',
+        )->where('estado', '!=', 0)->get();
+
+        return response()->json($modelos, 200);
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $this->validateContacto($request);
+
+        $contacto = ContactosModel::create($validated);
+
+        return response()->json([
+            'message' => 'Contacto creado correctamente',
+            'data'    => $contacto
+        ], 201);
+    }
+
+    public function show($id)
+    {
+        $contacto = ContactosModel::select(
+            'id',
+            'distribuidor_id',
+            'puesto_id',
+            'nombre',
+            'correo',
+            'extension',
+            'telefono',
+            'estatus',
+            'fecha_registro',
+            'estado',
+        )
+            ->where('id', $id)
+            ->where('estado', '!=', 0)
+            ->firstOrFail();
+
+        return response()->json($contacto, 200);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $contacto = ContactosModel::where('id', $id)
+            ->where('estado', '!=', 0)
+            ->firstOrFail();
+
+        $validated = $this->validateContacto($request, $id);
+
+        if ($contacto->clientes()->exists()) {
+            return response()->json([
+                'message' => 'No se puede actualizar el contacto porque tiene clientes asociados'
+            ], 400);
+        }
+
+        $contacto->update($validated);
+
+        return response()->json([
+            'message' => 'Contacto actualizado correctamente',
+            'data'    => $contacto
+        ], 200);
+    }
+
+    public function destroy($id)
+    {
+        $contacto = ContactosModel::where('id', $id)
+            ->where('estado', '!=', 0)
+            ->firstOrFail();
+
+        if ($contacto->clientes()->exists()) {
+
+            return response()->json([
+                'message' => 'No se puede eliminar el contacto porque tiene clientes asociados'
+            ], 400);
+        }
+
+        $contacto->update(['estado' => 0]);
+
+        return response()->json([
+            'message' => 'Contacto eliminado correctamente'
+        ], 200);
+    }
+
+    public function  validateContacto(Request $request, $id = null)
+    {
+        return $request->validate(
+            [
+                'distribuidor_id' => 'required|exists:cli_distribuidores,id',
+                'puesto_id' => 'required|exists:cli_puestos,id',
+                'nombre' => 'required|string|max:255|unique:cli_contactos,nombre,' . $id,
+                'correo' => 'nullable|string|email|max:255',
+                'extension' => 'nullable|string|max:255',
+                'telefono' => 'nullable|string|max:255',
+            ],
+            [
+                'distribuidor_id.required' => 'El distribuidor es obligatorio',
+                'distribuidor_id.exists' => 'El distribuidor no existe',
+                'puesto_id.required' => 'El puesto es obligatorio',
+                'puesto_id.exists' => 'El puesto no existe',
+                'nombre.required' => 'El nombre es obligatorio',
+                'nombre.max'      => 'El nombre no puede tener más de 255 caracteres',
+                'nombre.unique'   => 'El nombre ya existe',
+            ]
+        );
+    }
+}

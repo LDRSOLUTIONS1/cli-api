@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class GruposModel extends Model
 {
     protected $table = 'cli_grupos';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
@@ -16,7 +17,6 @@ class GruposModel extends Model
         'fecha_registro',
         'estado',
     ];
-
 
     public function clientes()
     {

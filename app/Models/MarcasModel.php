@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MarcasModel extends Model
 {
     protected $table = 'cli_marcas';
+    public $timestamps = false;
 
     protected $fillable = [
         'nombre',

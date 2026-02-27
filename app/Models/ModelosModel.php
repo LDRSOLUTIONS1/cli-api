@@ -7,18 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class ModelosModel extends Model
 {
 
-    protected $table = 'wms_linea_producto';
-    protected $primaryKey = 'idlineaproducto';
-    public $incrementing = false;
-    protected $keyType = 'string';
+    protected $table = 'cli_modelos';
+    public $timestamps = false;
 
     protected $fillable = [
-        'idlineaproducto',
-        'cve_lenea_producto',
-        'descripcion',
-        'fecha_creacion',
-        'estado',
+        'id',
         'marca_id',
+        'nombre',
+        'fecha_registro',
+        'estado',
     ];
 
     // Una marca tiene muchos clientes

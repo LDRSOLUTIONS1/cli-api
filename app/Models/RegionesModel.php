@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RegionesModel extends Model
 {
     protected $table = 'cli_regiones';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',

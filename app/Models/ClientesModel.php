@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ClientesModel extends Model
 {
     protected $table = 'cli_distribuidores';
+    public $timestamps = false;
 
     protected $fillable = [
         'id',
@@ -113,11 +114,10 @@ class ClientesModel extends Model
             ModelosModel::class,
             'cli_distribuidor_modelos',
             'distribuidor_id',
-            'id_modelo',
+            'modelo_id',
         )->select(
-            'wms_linea_producto.idlineaproducto',
-            'wms_linea_producto.cve_linea_producto',
-            'wms_linea_producto.descripcion',
+            'cli_modelos.id',
+            'cli_modelos.nombre',
         );
     }
 

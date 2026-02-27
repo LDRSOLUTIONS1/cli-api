@@ -1,16 +1,30 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MarcasController;
 use App\Http\Controllers\ClientesController;
-use App\Http\Controllers\GruposController;
 use App\Http\Controllers\TiposClientesController;
+use App\Http\Controllers\GruposController;
+use App\Http\Controllers\RegionalesController;
+use App\Http\Controllers\ModelosController;
+use App\Http\Controllers\ContactosController;
+use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\PuestosController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login/{numcolaborador}', [AuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/user', [AuthController::class, 'user']);
+    Route::resource('/marcas', MarcasController::class);
     Route::resource('/clientes', ClientesController::class);
-    Route::resource('/grupos', GruposController::class);
     Route::resource('/tipos-clientes', TiposClientesController::class);
+    Route::resource('/grupos', GruposController::class);
+    Route::resource('/regionales', RegionalesController::class);
+    Route::resource('/modelos', ModelosController::class);
+    Route::resource('/contactos', ContactosController::class);
+    Route::resource('/puestos', PuestosController::class);
+    Route::resource('/departamentos', DepartamentosController::class);
+
+
+    Route::get('/user', [AuthController::class, 'user']);
 });
