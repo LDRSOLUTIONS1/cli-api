@@ -25,7 +25,7 @@ class ModelosModel extends Model
             ClientesModel::class,
             'cli_distribuidor_modelos',
             'distribuidor_id',
-            'id_modelo',
+            'modelo_id',
         );
     }
 }

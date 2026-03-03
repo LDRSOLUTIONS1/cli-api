@@ -10,20 +10,42 @@ class ContactosController extends Controller
 {
     public function index()
     {
-        $modelos = ContactosModel::select(
-            'id',
-            'distribuidor_id',
-            'puesto_id',
-            'nombre',
-            'correo',
-            'extension',
-            'telefono',
-            'estatus',
-            'fecha_registro',
-            'estado',
-        )->where('estado', '!=', 0)->get();
+        $contactos = ContactosModel::with([
+            'distribuidor:id,nombre_comercial',
+            'puesto:id,nombre'
+        ])
+            ->select(
+                'id',
+                'distribuidor_id',
+                'puesto_id',
+                'nombre',
+                'correo',
+                'extension',
+                'telefono',
+                'estatus',
+                'fecha_registro',
+                'estado',
+            )
+            ->where('estado', '!=', 0)
+            ->get()
+            ->map(function ($contacto) {
 
-        return response()->json($modelos, 200);
+                return [
+                    'id' => $contacto->id,
+                    'distribuidor' => $contacto->distribuidor?->nombre_comercial,
+                    'distribuidor_id' => $contacto->distribuidor_id,
+                    'puesto' => $contacto->puesto?->nombre,
+                    'nombre' => $contacto->nombre,
+                    'correo' => $contacto->correo,
+                    'extension' => $contacto->extension,
+                    'telefono' => $contacto->telefono,
+                    'estatus' => $contacto->estatus,
+                    'fecha_registro' => $contacto->fecha_registro,
+                    'estado' => $contacto->estado,
+                ];
+            });
+
+        return response()->json($contactos, 200);
     }
 
     public function store(Request $request)
@@ -40,21 +62,26 @@ class ContactosController extends Controller
 
     public function show($id)
     {
-        $contacto = ContactosModel::select(
-            'id',
-            'distribuidor_id',
-            'puesto_id',
-            'nombre',
-            'correo',
-            'extension',
-            'telefono',
-            'estatus',
-            'fecha_registro',
-            'estado',
-        )
+        $contacto = ContactosModel::with([
+            'distribuidor:id,nombre_comercial',
+            'puesto:id,nombre'
+        ])
+            ->select(
+                'id',
+                'distribuidor_id',
+                'puesto_id',
+                'nombre',
+                'correo',
+                'extension',
+                'telefono',
+                'estatus',
+                'fecha_registro',
+                'estado',
+            )
             ->where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
+
 
         return response()->json($contacto, 200);
     }
@@ -66,12 +93,6 @@ class ContactosController extends Controller
             ->firstOrFail();
 
         $validated = $this->validateContacto($request, $id);
-
-        if ($contacto->clientes()->exists()) {
-            return response()->json([
-                'message' => 'No se puede actualizar el contacto porque tiene clientes asociados'
-            ], 400);
-        }
 
         $contacto->update($validated);
 
@@ -86,13 +107,6 @@ class ContactosController extends Controller
         $contacto = ContactosModel::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
-
-        if ($contacto->clientes()->exists()) {
-
-            return response()->json([
-                'message' => 'No se puede eliminar el contacto porque tiene clientes asociados'
-            ], 400);
-        }
 
         $contacto->update(['estado' => 0]);
 

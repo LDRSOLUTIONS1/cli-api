@@ -7,19 +7,6 @@ use Illuminate\Http\Request;
 
 class PuestosController extends Controller
 {
-    // public function index()
-    // {
-    //     $puestos = PuestosModel::with('departamento:id,nombre as nombre_departamento')->select(
-    //         'id',
-    //         'departamento_id',
-    //         'nombre',
-    //         'descripcion',
-    //         'fecha_registro',
-    //         'estado',
-    //     )->where('estado', '!=', 0)->get();
-
-    //     return response()->json($puestos, 200);
-    // }
     public function index()
     {
         $puestos = PuestosModel::with([

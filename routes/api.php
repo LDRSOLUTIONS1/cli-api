@@ -10,6 +10,7 @@ use App\Http\Controllers\ModelosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\PuestosController;
+use App\Http\Controllers\RegimenesFiscalesController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login/{numcolaborador}', [AuthController::class, 'login']);
@@ -25,6 +26,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/puestos', PuestosController::class);
     Route::resource('/departamentos', DepartamentosController::class);
 
+    Route::resource('/regimenes-fiscales', RegimenesFiscalesController::class);
 
     Route::get('/user', [AuthController::class, 'user']);
 });

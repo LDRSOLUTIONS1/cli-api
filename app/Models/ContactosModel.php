@@ -22,11 +22,6 @@ class ContactosModel extends Model
         'estado',
     ];
 
-    protected $hidden = [
-        'fecha_registro',
-        'estado',
-    ];
-
     // Un contacto pertenece a un distribuidor
     public function distribuidor()
     {
