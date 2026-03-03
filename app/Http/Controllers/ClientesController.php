@@ -20,11 +20,16 @@ class ClientesController extends Controller
             },
             'direcciones.estado.region' => function ($q) {
                 $q->select('id', 'nombre');
-            }
+            },
+            'tipoCliente' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+
 
         ])
             ->select(
                 'id',
+                'tipo_cliente_id',
                 'grupo_id',
                 'razon_social',
                 'tipo_persona',
@@ -45,6 +50,7 @@ class ClientesController extends Controller
 
                 return [
                     'id' => $cliente->id,
+                    'tipo_cliente' => $cliente->tipoCliente->nombre ?? null,
                     'grupo' => $cliente->grupo->nombre ?? null,
                     'razon_social' => $cliente->razon_social,
                     'tipo_persona' => $cliente->tipo_persona,

@@ -35,11 +35,23 @@ class TiposClientesController extends Controller
         ], 201);
     }
 
-    public function show($id)
+    public function sshow($id)
     {
-
         $tipocliente = TiposClientesModel::with([
-            'clientes:id,tipo_cliente_id,nombre_comercial,razon_social,rfc,telefono,plaza'
+            'clientes' => function ($q) {
+                $q->select(
+                    'id',
+                    'tipo_cliente_id',
+                    'grupo_id',
+                    'razon_social',
+                    'tipo_persona',
+                    'nombre_comercial',
+                    'plaza',
+                    'tipo_negocio',
+                    'estado'
+                );
+            },
+            'clientes.grupo:id,nombre',
         ])
             ->select('id', 'nombre', 'descripcion', 'fecha_registro', 'estado')
             ->where('id', $id)
@@ -50,6 +62,73 @@ class TiposClientesController extends Controller
                 'error' => 'Tipo de cliente no encontrado'
             ], 404);
         }
+
+        return response()->json($tipocliente, 200);
+    }
+
+    public function show($id)
+    {
+        $tipocliente = TiposClientesModel::with([
+            'clientes' => function ($q) {
+                $q->select(
+                    'id',
+                    'tipo_cliente_id',
+                    'grupo_id',
+                    'razon_social',
+                    'tipo_persona',
+                    'nombre_comercial',
+                    'plaza',
+                    'tipo_negocio',
+                    'estado'
+                );
+            },
+            'clientes.grupo:id,nombre',
+
+            'clientes.direcciones' => function ($q) {
+                $q->select('id', 'distribuidor_id', 'estado_id');
+            },
+            'clientes.direcciones.estado' => function ($q) {
+                $q->select('id', 'nombre', 'region_id');
+            },
+            'clientes.direcciones.estado.region' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'clientes.tipoCliente' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+
+        ])
+            ->select('id', 'nombre', 'descripcion', 'fecha_registro', 'estado')
+            ->where('id', $id)
+            ->first();
+
+        if (!$tipocliente) {
+            return response()->json([
+                'error' => 'Tipo de cliente no encontrado'
+            ], 404);
+        }
+
+        $tipocliente->clientes = $tipocliente->clientes->map(function ($cliente) {
+
+            $region = optional(
+                optional(
+                    optional($cliente->direcciones->first())->estado
+                )->region
+            )->nombre;
+
+            return [
+                'id' => $cliente->id,
+                'tipo_cliente' => $cliente->tipoCliente->nombre ?? null,
+                'grupo' => $cliente->grupo->nombre ?? null,
+                'razon_social' => $cliente->razon_social,
+                'tipo_persona' => $cliente->tipo_persona,
+                'nombre_comercial' => $cliente->nombre_comercial,
+                'plaza' => $cliente->plaza,
+                'tipo_negocio' => $cliente->tipo_negocio,
+                'estado' => $cliente->estado,
+                'region' => $region,
+            ];
+        });
 
         return response()->json($tipocliente, 200);
     }
