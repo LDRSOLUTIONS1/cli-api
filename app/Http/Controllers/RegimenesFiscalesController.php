@@ -7,18 +7,20 @@ use Illuminate\Http\Request;
 
 class RegimenesFiscalesController extends Controller
 {
-    public function index()
+    public function getByTipoPersona($tipoPersona = null)
     {
-        $regimenesFiscales = RegimenesFiscalesModel::select(
-            'id',
-            'c_regimen_fiscal',
-            'descripcion',
-            'persona_fisica',
-            'persona_moral',
-            'fecha_registro',
-            'estado',
-        )->where('estado', '!=', 0)->get();
+        $query = RegimenesFiscalesModel::where('estado', 2);
 
-        return response()->json($regimenesFiscales, 200);
+        if ($tipoPersona == "1") {
+            $query->where('persona_fisica', 'Sí');
+        } elseif ($tipoPersona == "2") {
+            $query->where('persona_moral', 'Sí');
+        }
+
+        $regimenes = $query
+            ->orderBy('c_regimen_fiscal')
+            ->get(['id', 'c_regimen_fiscal', 'descripcion']);
+
+        return response()->json($regimenes);
     }
 }

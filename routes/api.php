@@ -9,6 +9,9 @@ use App\Http\Controllers\RegionalesController;
 use App\Http\Controllers\ModelosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\DepartamentosController;
+use App\Http\Controllers\EstadosController;
+use App\Http\Controllers\MunicipiosController;
+use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PuestosController;
 use App\Http\Controllers\RegimenesFiscalesController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +29,16 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/puestos', PuestosController::class);
     Route::resource('/departamentos', DepartamentosController::class);
 
-    Route::resource('/regimenes-fiscales', RegimenesFiscalesController::class);
+    Route::get(
+        '/regimenes-fiscales/{tipoPersona?}',
+        [RegimenesFiscalesController::class, 'getByTipoPersona']
+    );
+    Route::resource('/paises', PaisesController::class);
+    Route::resource('/estados', EstadosController::class);
+    Route::resource('/municipios', MunicipiosController::class);
+
+    Route::get('/estados/pais/{pais_id}', [EstadosController::class, 'getByPais']);
+    Route::get('/municipios/estado/{estado_id}', [MunicipiosController::class, 'getByEstado']);
 
     Route::get('/user', [AuthController::class, 'user']);
 });

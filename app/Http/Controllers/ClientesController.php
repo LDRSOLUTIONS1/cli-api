@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\ClientesModel;
 use App\Models\ContactosModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ClientesController extends Controller
 {
@@ -67,13 +69,143 @@ class ClientesController extends Controller
 
     public function store(Request $request)
     {
-        $validated = $this->validateCliente($request);
+        $validator = Validator::make($request->all(), [
+            'marca_id' => 'required|exists:cli_marcas,id',
+            'tipo_cliente_id' => 'required|exists:cli_tipos_cliente,id',
+            'tipo_persona' => 'required|in:1,2',
+            'regimen_fiscal_id' => 'required|exists:cli_regimenes_fiscales,id',
 
-        $cliente = ClientesModel::create($validated);
+            'nombre_fisica' => 'nullable|string|max:255',
+            'apellido_paterno' => 'nullable|string|max:255',
+            'apellido_materno' => 'nullable|string|max:255',
+            'fecha_nacimiento' => 'nullable|date',
+            'curp' => 'nullable|string|max:255',
+
+            'representante_legal' => 'nullable|string|max:255',
+            'domicilio_fiscal' => 'nullable|string|max:255',
+
+            'correo' => 'required|email|max:255',
+
+            'grupo_id' => 'required|exists:cli_grupos,id',
+
+            'nombre_comercial' => 'required|string|max:255',
+            'razon_social' => 'required|string|max:255',
+            'rfc' => 'required|string|max:255',
+
+            'repve' => 'required|string|max:255',
+            'plaza' => 'required|string|max:255',
+            'clasificacion' => 'required|string|max:255',
+
+            'estatus' => 'required|in:Activo,Desarrollo,Inactivo',
+            'tipo_negocio' => 'required|in:Matriz,Sucursal',
+
+            'matriz_id' => 'nullable|exists:cli_distribuidores,id',
+
+            'telefono' => 'required|string|max:20',
+            'telefono_alt' => 'nullable|string|max:20',
+
+            'modelo' => 'required|array',
+            'modelo.*' => 'exists:cli_modelos,id',
+
+            'regional' => 'required|array',
+            'regional.*' => 'exists:cli_regionales,id',
+
+            'direccion_principal' => 'required|array',
+            'direccion_fiscal' => 'required|array',
+
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        DB::beginTransaction();
+
+        $cliente = ClientesModel::create([
+            'marca_id' => $request->marca_id,
+            'tipo_cliente_id' => $request->tipo_cliente_id,
+            'tipo_persona' => $request->tipo_persona,
+            'regimen_fiscal_id' => $request->regimen_fiscal_id,
+
+            'nombre_fisica' => $request->nombre_fisica,
+            'apellido_paterno' => $request->apellido_paterno,
+            'apellido_materno' => $request->apellido_materno,
+            'fecha_nacimiento' => $request->fecha_nacimiento,
+            'curp' => $request->curp,
+
+            'representante_legal' => $request->representante_legal,
+            'domicilio_fiscal' => $request->domicilio_fiscal,
+
+            'correo' => $request->correo,
+
+            'grupo_id' => $request->grupo_id,
+
+            'nombre_comercial' => $request->nombre_comercial,
+            'razon_social' => $request->razon_social,
+            'rfc' => $request->rfc,
+
+            'repve' => $request->repve,
+            'plaza' => $request->plaza,
+            'clasificacion' => $request->clasificacion,
+
+            'estatus' => $request->estatus,
+            'tipo_negocio' => $request->tipo_negocio,
+
+            'telefono' => $request->telefono,
+            'telefono_alt' => $request->telefono_alt,
+
+            'matriz_id' => $request->matriz_id,
+        ]);
+
+        // MODELOS
+        $modelos = [];
+
+        foreach ($request->modelo as $modelo) {
+            $modelos[$modelo] = [
+                'distribuidor_id' => $cliente->id
+            ];
+        }
+
+        $cliente->modelos()->sync($modelos);
+
+        // REGIONALES
+        $cliente->regionales()->sync($request->regional);
+
+        // DIRECCION PRINCIPAL
+        $direccion = $request->direccion_principal;
+
+        $cliente->direcciones()->create([
+            'tipo' => $direccion['tipo'],
+            'calle' => $direccion['calle'],
+            'numero_ext' => $direccion['numero_ext'],
+            'numero_int' => $direccion['numero_int'],
+            'colonia' => $direccion['colonia'],
+            'codigo_postal' => $direccion['codigo_postal'],
+            'pais_id' => $direccion['pais_id'],
+            'estado_id' => $direccion['estado_id'],
+            'municipio_id' => $direccion['municipio_id'],
+        ]);
+
+        // DIRECCION FISCAL
+        $fiscal = $request->direccion_fiscal;
+
+        $cliente->direccionesFiscales()->create([
+            'tipo' => $fiscal['tipo'],
+            'calle' => $fiscal['calle'],
+            'numero_ext' => $fiscal['numero_ext'],
+            'numero_int' => $fiscal['numero_int'],
+            'colonia' => $fiscal['colonia'],
+            'codigo_postal' => $fiscal['codigo_postal'],
+            'pais_id' => $fiscal['pais_id'],
+            'estado_id' => $fiscal['estado_id'],
+            'municipio_id' => $fiscal['municipio_id'],
+        ]);
+
+        DB::commit();
 
         return response()->json([
             'message' => 'Cliente creado correctamente',
-            'data'    => $cliente
+            'data' => $cliente
         ], 201);
     }
 
@@ -244,28 +376,103 @@ class ClientesController extends Controller
     {
         return $request->validate(
             [
-                'matriz_id' => 'nullable|exists:cli_clientes,id',
-                'distribuidor_id' => 'nullable|exists:cli_clientes,id',
-                'grupo_id' => 'nullable|exists:cli_grupos,id',
-                'tipo_cliente_id' => 'nullable|exists:cli_tipos_clientes,id',
-                'regimen_fiscal_id' => 'nullable|exists:cat_regimenes_fiscales,id',
-                'razon_social' => 'required|string|max:255',
-                'tipo_persona' => 'required|in:F,M',
+                'marca_id' => 'required|exists:cli_marcas,id',
+                'tipo_cliente_id' => 'required|exists:cli_tipos_cliente,id',
+                'tipo_persona' => 'required|in:1,2',
+                'regimen_fiscal_id' => 'required|exists:cli_regimenes_fiscales,id',
+
+                'nombre_fisica' => 'nullable|string|max:255',
+                'apellido_paterno' => 'nullable|string|max:255',
+                'apellido_materno' => 'nullable|string|max:255',
+                'fecha_nacimiento' => 'nullable|date',
+                'curp' => 'nullable|string|max:255',
+
+                'representante_legal' => 'nullable|string|max:255',
+                'domicilio_fiscal' => 'nullable|string|max:255',
+
+                'correo' => 'required|email|max:255',
+
+                'grupo_id' => 'required|exists:cli_grupos,id',
+
                 'nombre_comercial' => 'required|string|max:255',
-                'plaza' => 'nullable|string|max:255',
-                'clasificacion' => 'nullable|string|max:255',
-                'estatus' => 'required|in:Activo,Inactivo',
-                'tipo_negocio' => 'required|in:Matriz,Sucursal,Distribuidor',
-                'telefono' => 'nullable|string|max:20',
+                'razon_social' => 'required|string|max:255',
+                'rfc' => 'required|string|max:255',
+
+                'repve' => 'required|string|max:255',
+                'plaza' => 'required|string|max:255',
+                'clasificacion' => 'required|string|max:255',
+
+                'estatus' => 'required|in:Activo,Desarrollo,Inactivo',
+                'tipo_negocio' => 'required|in:Matriz,Sucursal',
+
+                'matriz_id' => 'nullable|exists:cli_distribuidores,id',
+
+                'telefono' => 'required|string|max:20',
                 'telefono_alt' => 'nullable|string|max:20',
+
+                'modelo' => 'required|array',
+                'modelo.*' => 'exists:cli_modelos,id',
+
+                'regional' => 'required|array',
+                'regional.*' => 'exists:cli_regionales,id',
+
+                'direccion_principal' => 'required|array',
+                'direccion_fiscal' => 'required|array',
             ],
             [
-                'matriz_id.exists' => 'La matriz seleccionada no existe',
-                'distribuidor_id.exists' => 'El distribuidor seleccionado no existe',
-                'grupo_id.exists' => 'El grupo seleccionado no existe',
-                'tipo_cliente_id.exists' => 'El tipo de cliente seleccionado no existe',
-                'regimen_fiscal_id.exists' => 'El régimen fiscal seleccionado no existe',
+                'marca_id.required' => 'La marca es obligatoria',
+                'marca_id.exists' => 'La marca no existe',
+                'tipo_cliente_id.required' => 'El tipo de cliente es obligatorio',
+                'tipo_cliente_id.exists' => 'El tipo de cliente no existe',
+                'tipo_persona.required' => 'El tipo de persona es obligatorio',
+                'regimen_fiscal_id.required' => 'El regimen fiscal es obligatorio',
+                'regimen_fiscal_id.exists' => 'El regimen fiscal no existe',
 
+                'nombre_fisica.max' => 'El nombre no puede tener más de 255 caracteres',
+                'apellido_paterno.max' => 'El apellido paterno no puede tener más de 255 caracteres',
+                'apellido_materno.max' => 'El apellido materno no puede tener más de 255 caracteres',
+                'curp.max' => 'La curp no puede tener más de 255 caracteres',
+
+                'representante_legal.max' => 'El representante legal no puede tener más de 255 caracteres',
+                'domicilio_fiscal.max' => 'El domicilio fiscal no puede tener más de 255 caracteres',
+
+                'correo.required' => 'El correo es obligatorio',
+                'correo.email' => 'El correo no es valido',
+                'correo.max' => 'El correo no puede tener más de 255 caracteres',
+
+                'grupo_id.required' => 'El grupo es obligatorio',
+                'grupo_id.exists' => 'El grupo no existe',
+
+                'nombre_comercial.required' => 'El nombre comercial es obligatorio',
+                'nombre_comercial.max' => 'El nombre comercial no puede tener más de 255 caracteres',
+                'razon_social.required' => 'La razon social es obligatoria',
+                'razon_social.max' => 'La razon social no puede tener más de 255 caracteres',
+                'rfc.required' => 'El rfc es obligatorio',
+                'rfc.max' => 'El rfc no puede tener más de 255 caracteres',
+
+                'repve.required' => 'El repve es obligatorio',
+                'repve.max' => 'El repve no puede tener más de 255 caracteres',
+                'plaza.required' => 'La plaza es obligatoria',
+                'plaza.max' => 'La plaza no puede tener más de 255 caracteres',
+                'clasificacion.required' => 'La clasificacion es obligatoria',
+                'clasificacion.max' => 'La clasificacion no puede tener más de 255 caracteres',
+
+                'estatus.required' => 'El estatus es obligatorio',
+                'estatus.in' => 'El estatus no es valido',
+                'tipo_negocio.required' => 'El tipo de negocio es obligatorio',
+                'tipo_negocio.in' => 'El tipo de negocio no es valido',
+
+                'matriz_id.exists' => 'La matriz no existe',
+
+                'telefono.required' => 'El telefono es obligatorio',
+                'telefono.max' => 'El telefono no puede tener más de 20 caracteres',
+                'telefono_alt.max' => 'El telefono alternativo no puede tener más de 20 caracteres',
+
+                'modelo.required' => 'El modelo es obligatorio',
+                'regional.required' => 'La regional es obligatoria',
+
+                'direccion_principal.required' => 'La direccion principal es obligatoria',
+                'direccion_fiscal.required' => 'La direccion fiscal es obligatoria',
             ]
         );
     }

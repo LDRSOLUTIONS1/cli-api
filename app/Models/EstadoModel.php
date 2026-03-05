@@ -19,6 +19,18 @@ class EstadoModel extends Model
         'estado',
     ];
 
+    // Un estado pertenece a un país
+    public function pais()
+    {
+        return $this->belongsTo(PaisModel::class, 'pais_id');
+    }
+
+    // Un estado tiene muchos municipios
+    public function municipios()
+    {
+        return $this->hasMany(MunicipioModel::class, 'estado_id');
+    }
+
     // Un estado pertenece a una región
     public function region()
     {

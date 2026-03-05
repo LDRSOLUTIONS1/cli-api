@@ -16,4 +16,10 @@ class MunicipioModel extends Model
         'fecha_registro',
         'estado',
     ];
+
+    // Un municipio pertenece a un estado
+    public function estado()
+    {
+        return $this->belongsTo(EstadoModel::class, 'estado_id');
+    }
 }
