@@ -40,5 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/estados/pais/{pais_id}', [EstadosController::class, 'getByPais']);
     Route::get('/municipios/estado/{estado_id}', [MunicipiosController::class, 'getByEstado']);
 
+    Route::get('/clientes/editar/{id}', [ClientesController::class, 'clientesEditar']);
+
     Route::get('/user', [AuthController::class, 'user']);
 });

@@ -7,7 +7,7 @@ use App\Models\ContactosModel;
 use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\DB;
 
-class ClientesController extends Controller
+    class ClientesController extends Controller
 {
     public function index()
     {
@@ -73,8 +73,36 @@ class ClientesController extends Controller
         DB::beginTransaction();
 
         try {
-
             $cliente = ClientesModel::create($validated);
+
+            //MODELOS
+            if ($request->filled('modelo')) {
+                $cliente->modelos()->sync($request->modelo);
+            }
+
+            //REGIONALES
+            if ($request->filled('regional')) {
+                $cliente->regionales()->sync($request->regional);
+            }
+
+            //MARCAS
+            if ($request->filled('marca_id')) {
+                $cliente->marcas()->sync([$request->marca_id]);
+            }
+
+            //DIRECCION PRINCIPAL
+            if ($request->filled('direccion_principal')) {
+                $direccion = $request->direccion_principal;
+                $direccion['distribuidor_id'] = $cliente->id;
+                $cliente->direcciones()->create($direccion);
+            }
+
+            //DIRECCION FISCAL
+            if ($request->filled('direccion_fiscal')) {
+                $direccionFiscal = $request->direccion_fiscal;
+                $direccionFiscal['distribuidor_id'] = $cliente->id;
+                $cliente->direccionesFiscales()->create($direccionFiscal);
+            }
 
             DB::commit();
 
@@ -84,7 +112,7 @@ class ClientesController extends Controller
             ], 201);
         } catch (\Exception $e) {
 
-            DB::rollback();
+            DB::rollBack();
 
             return response()->json([
                 'message' => 'Error al crear cliente',
@@ -227,16 +255,196 @@ class ClientesController extends Controller
         return response()->json($cliente, 200);
     }
 
+    public function clientesEditar($id)
+    {
+        $cliente = ClientesModel::with([
+            'matriz' => function ($query) {
+                $query->select(
+                    'id',
+                    'nombre_comercial',
+                    'razon_social',
+                );
+            },
+            'sucursales' => function ($query) {
+                $query->select(
+                    'id',
+                    'matriz_id',
+                    'nombre_comercial',
+                    'razon_social',
+                    'plaza',
+                    'telefono',
+                );
+            },
+            'regimenFiscal' => function ($query) {
+                $query->select(
+                    'id',
+                    'c_regimen_fiscal',
+                    'descripcion',
+                    'persona_fisica',
+                    'persona_moral'
+                );
+            },
+            'grupo' => function ($query) {
+                $query->select(
+                    'id',
+                    'nombre'
+                );
+            },
+            'tipoCliente' => function ($query) {
+                $query->select(
+                    'id',
+                    'nombre'
+                );
+            },
+            'direcciones' => function ($query) {
+                $query->select(
+                    'id',
+                    'distribuidor_id',
+                    'tipo',
+                    'calle',
+                    'numero_ext',
+                    'numero_int',
+                    'colonia',
+                    'codigo_postal',
+                    'pais_id',
+                    'estado_id',
+                    'municipio_id',
+                );
+            },
+            'direcciones.pais' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'direcciones.estado' => function ($q) {
+                $q->select('id', 'nombre', 'region_id');
+            },
+            'direcciones.estado.region' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'direcciones.municipio' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'direccionesFiscales' => function ($query) {
+                $query->select(
+                    'id',
+                    'distribuidor_id',
+                    'tipo',
+                    'calle',
+                    'numero_ext',
+                    'numero_int',
+                    'colonia',
+                    'codigo_postal',
+                    'pais_id',
+                    'estado_id',
+                    'municipio_id',
+                );
+            },
+            'direccionesFiscales.pais' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'direccionesFiscales.estado' => function ($q) {
+                $q->select('id', 'nombre', 'region_id');
+            },
+            'direccionesFiscales.estado.region' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'direccionesFiscales.municipio' => function ($q) {
+                $q->select('id', 'nombre');
+            },
+            'regionales',
+            'modelos',
+            'marcas',
+        ])->findOrFail($id);
+
+        if ($cliente->tipo_negocio === 'Matriz') {
+
+            $ids = ClientesModel::where('matriz_id', $cliente->id)
+                ->pluck('id')
+                ->push($cliente->id);
+        } else {
+            $ids = collect([$cliente->id]);
+        }
+
+        $contactos = ContactosModel::select(
+            'id',
+            'distribuidor_id',
+            'nombre',
+            'correo',
+            'extension',
+            'telefono',
+            'estatus',
+            'fecha_registro',
+            'puesto_id'
+        )
+            ->with([
+                'puesto:id,nombre,departamento_id',
+                'puesto.departamento:id,nombre',
+                'distribuidor:id,nombre_comercial'
+            ])
+            ->whereIn('distribuidor_id', $ids)
+            ->get();
+
+        $cliente->contactos = $contactos;
+
+        return response()->json($cliente, 200);
+    }
+
     public function update(ClienteRequest $request, $id)
     {
-        $cliente = ClientesModel::findOrFail($id);
+        DB::beginTransaction();
 
-        $cliente->update($request->validated());
+        try {
+            $cliente = ClientesModel::findOrFail($id);
 
-        return response()->json([
-            'message' => 'Cliente actualizado correctamente',
-            'data' => $cliente
-        ]);
+            $cliente->update($request->validated());
+
+            //MODELOS
+            if ($request->has('modelo')) {
+                $cliente->modelos()->sync($request->modelo);
+            }
+
+            //REGIONALES
+            if ($request->has('regional')) {
+                $cliente->regionales()->sync($request->regional);
+            }
+
+            //MARCAS
+            if ($request->filled('marca_id')) {
+                $cliente->marcas()->sync([$request->marca_id]);
+            }
+
+            //DIRECCION PRINCIPAL
+            if ($request->filled('direccion_principal')) {
+                $direccion = $request->direccion_principal;
+                $cliente->direcciones()->updateOrCreate(
+                    ['distribuidor_id' => $cliente->id],
+                    $direccion
+                );
+            }
+
+            //DIRECCION FISCAL
+            if ($request->filled('direccion_fiscal')) {
+                $direccionFiscal = $request->direccion_fiscal;
+                $cliente->direccionesFiscales()->updateOrCreate(
+                    ['distribuidor_id' => $cliente->id],
+                    $direccionFiscal
+                );
+            }
+
+            DB::commit();
+
+            return response()->json([
+                'message' => 'Cliente actualizado correctamente',
+                'data' => $cliente
+            ]);
+        } catch (\Exception $e) {
+
+            DB::rollBack();
+
+            return response()->json([
+                'message' => 'Error al actualizar cliente',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
 
     public function destroy($id)

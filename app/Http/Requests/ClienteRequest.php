@@ -56,8 +56,25 @@ class ClienteRequest extends FormRequest
             'regional' => 'required|array',
             'regional.*' => 'exists:cli_regionales,id',
 
-            'direccion_principal' => 'required|array',
-            'direccion_fiscal' => 'required|array',
+            'direccion_principal.tipo' => 'required|string',
+            'direccion_principal.calle' => 'required|string|max:255',
+            'direccion_principal.numero_ext' => 'required|string|max:50',
+            'direccion_principal.numero_int' => 'nullable|string|max:50',
+            'direccion_principal.colonia' => 'required|string|max:255',
+            'direccion_principal.codigo_postal' => 'required|string|max:10',
+            'direccion_principal.pais_id' => 'required|exists:cli_paises,id',
+            'direccion_principal.estado_id' => 'required|exists:cli_estados,id',
+            'direccion_principal.municipio_id' => 'required|exists:cli_municipios,id',
+
+            'direccion_fiscal.tipo' => 'required|string',
+            'direccion_fiscal.calle' => 'required|string|max:255',
+            'direccion_fiscal.numero_ext' => 'required|string|max:50',
+            'direccion_fiscal.numero_int' => 'nullable|string|max:50',
+            'direccion_fiscal.colonia' => 'required|string|max:255',
+            'direccion_fiscal.codigo_postal' => 'required|string|max:10',
+            'direccion_fiscal.pais_id' => 'required|exists:cli_paises,id',
+            'direccion_fiscal.estado_id' => 'required|exists:cli_estados,id',
+            'direccion_fiscal.municipio_id' => 'required|exists:cli_municipios,id',
         ];
     }
 
@@ -151,11 +168,67 @@ class ClienteRequest extends FormRequest
             'regional.array' => 'La regional debe ser una lista válida',
             'regional.*.exists' => 'Una de las regionales seleccionadas no existe',
 
-            'direccion_principal.required' => 'La dirección principal es obligatoria',
-            'direccion_principal.array' => 'La dirección principal debe ser válida',
+            'direccion_principal.tipo.required' => 'El tipo de dirección principal es obligatorio',
+            'direccion_principal.tipo.string' => 'El tipo de dirección principal debe ser texto',
 
-            'direccion_fiscal.required' => 'La dirección fiscal es obligatoria',
-            'direccion_fiscal.array' => 'La dirección fiscal debe ser válida',
+            'direccion_principal.calle.required' => 'La calle de la dirección principal es obligatoria',
+            'direccion_principal.calle.string' => 'La calle de la dirección principal debe ser texto',
+            'direccion_principal.calle.max' => 'La calle de la dirección principal no puede superar los 255 caracteres',
+
+            'direccion_principal.numero_ext.required' => 'El número exterior de la dirección principal es obligatorio',
+            'direccion_principal.numero_ext.string' => 'El número exterior de la dirección principal debe ser texto',
+            'direccion_principal.numero_ext.max' => 'El número exterior de la dirección principal no puede superar los 50 caracteres',
+
+            'direccion_principal.numero_int.string' => 'El número interior de la dirección principal debe ser texto',
+            'direccion_principal.numero_int.max' => 'El número interior de la dirección principal no puede superar los 50 caracteres',
+
+            'direccion_principal.colonia.required' => 'La colonia de la dirección principal es obligatoria',
+            'direccion_principal.colonia.string' => 'La colonia de la dirección principal debe ser texto',
+            'direccion_principal.colonia.max' => 'La colonia de la dirección principal no puede superar los 255 caracteres',
+
+            'direccion_principal.codigo_postal.required' => 'El código postal de la dirección principal es obligatorio',
+            'direccion_principal.codigo_postal.string' => 'El código postal de la dirección principal debe ser texto',
+            'direccion_principal.codigo_postal.max' => 'El código postal de la dirección principal no puede superar los 10 caracteres',
+
+            'direccion_principal.pais_id.required' => 'El país de la dirección principal es obligatorio',
+            'direccion_principal.pais_id.exists' => 'El país de la dirección principal no existe',
+
+            'direccion_principal.estado_id.required' => 'El estado de la dirección principal es obligatorio',
+            'direccion_principal.estado_id.exists' => 'El estado de la dirección principal no existe',
+
+            'direccion_principal.municipio_id.required' => 'El municipio de la dirección principal es obligatorio',
+            'direccion_principal.municipio_id.exists' => 'El municipio de la dirección principal no existe',
+
+            'direccion_fiscal.tipo.required' => 'El tipo de dirección fiscal es obligatorio',
+            'direccion_fiscal.tipo.string' => 'El tipo de dirección fiscal debe ser texto',
+
+            'direccion_fiscal.calle.required' => 'La calle de la dirección fiscal es obligatoria',
+            'direccion_fiscal.calle.string' => 'La calle de la dirección fiscal debe ser texto',
+            'direccion_fiscal.calle.max' => 'La calle de la dirección fiscal no puede superar los 255 caracteres',
+
+            'direccion_fiscal.numero_ext.required' => 'El número exterior de la dirección fiscal es obligatorio',
+            'direccion_fiscal.numero_ext.string' => 'El número exterior de la dirección fiscal debe ser texto',
+            'direccion_fiscal.numero_ext.max' => 'El número exterior de la dirección fiscal no puede superar los 50 caracteres',
+
+            'direccion_fiscal.numero_int.string' => 'El número interior de la dirección fiscal debe ser texto',
+            'direccion_fiscal.numero_int.max' => 'El número interior de la dirección fiscal no puede superar los 50 caracteres',
+
+            'direccion_fiscal.colonia.required' => 'La colonia de la dirección fiscal es obligatoria',
+            'direccion_fiscal.colonia.string' => 'La colonia de la dirección fiscal debe ser texto',
+            'direccion_fiscal.colonia.max' => 'La colonia de la dirección fiscal no puede superar los 255 caracteres',
+
+            'direccion_fiscal.codigo_postal.required' => 'El código postal de la dirección fiscal es obligatorio',
+            'direccion_fiscal.codigo_postal.string' => 'El código postal de la dirección fiscal debe ser texto',
+            'direccion_fiscal.codigo_postal.max' => 'El código postal de la dirección fiscal no puede superar los 10 caracteres',
+
+            'direccion_fiscal.pais_id.required' => 'El país de la dirección fiscal es obligatorio',
+            'direccion_fiscal.pais_id.exists' => 'El país de la dirección fiscal no existe',
+
+            'direccion_fiscal.estado_id.required' => 'El estado de la dirección fiscal es obligatorio',
+            'direccion_fiscal.estado_id.exists' => 'El estado de la dirección fiscal no existe',
+
+            'direccion_fiscal.municipio_id.required' => 'El municipio de la dirección fiscal es obligatorio',
+            'direccion_fiscal.municipio_id.exists' => 'El municipio de la dirección fiscal no existe',
         ];
     }
 }
