@@ -30,7 +30,7 @@ class ClienteRequest extends FormRequest
             'representante_legal' => 'nullable|string|max:255',
             'domicilio_fiscal' => 'nullable|string|max:255',
 
-            'correo' => 'required|email|max:255',
+            'correo' => 'nullable|email|max:255',
 
             'grupo_id' => 'required|exists:cli_grupos,id',
 
@@ -114,7 +114,6 @@ class ClienteRequest extends FormRequest
             'domicilio_fiscal.string' => 'El domicilio fiscal debe ser texto',
             'domicilio_fiscal.max' => 'El domicilio fiscal no puede superar los 255 caracteres',
 
-            'correo.required' => 'El correo es obligatorio',
             'correo.email' => 'El correo no es válido',
             'correo.max' => 'El correo no puede superar los 255 caracteres',
 
