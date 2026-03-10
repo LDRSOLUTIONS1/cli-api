@@ -121,7 +121,7 @@ class ContactosController extends Controller
             [
                 'distribuidor_id' => 'required|exists:cli_distribuidores,id',
                 'puesto_id' => 'required|exists:cli_puestos,id',
-                'nombre' => 'required|string|max:255|unique:cli_contactos,nombre,' . $id,
+                'nombre' => 'required|string|max:255',
                 'correo' => 'nullable|string|email|max:255',
                 'extension' => 'nullable|string|max:255',
                 'telefono' => 'nullable|string|max:255',
@@ -133,7 +133,6 @@ class ContactosController extends Controller
                 'puesto_id.exists' => 'El puesto no existe',
                 'nombre.required' => 'El nombre es obligatorio',
                 'nombre.max'      => 'El nombre no puede tener más de 255 caracteres',
-                'nombre.unique'   => 'El nombre ya existe',
             ]
         );
     }
