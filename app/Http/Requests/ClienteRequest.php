@@ -19,7 +19,7 @@ class ClienteRequest extends FormRequest
             'marca_id' => 'required|exists:cli_marcas,id',
             'tipo_cliente_id' => 'required|exists:cli_tipos_cliente,id',
             'tipo_persona' => 'required|in:1,2',
-            'regimen_fiscal_id' => 'required|exists:cli_regimenes_fiscales,id',
+            'regimen_fiscal_id' => 'nullable|exists:cli_regimenes_fiscales,id',
 
             'nombre_fisica' => 'nullable|string|max:255',
             'apellido_paterno' => 'nullable|string|max:255',
@@ -38,7 +38,7 @@ class ClienteRequest extends FormRequest
             'razon_social' => 'required|string|max:255',
             'rfc' => 'required|string|max:255',
 
-            'repve' => 'required|string|max:255',
+            'repve' => 'nullable|string|max:255',
             'plaza' => 'required|string|max:255',
             'clasificacion' => 'required|string|max:255',
 
@@ -91,7 +91,6 @@ class ClienteRequest extends FormRequest
             'tipo_persona.required' => 'El tipo de persona es obligatorio',
             'tipo_persona.in' => 'El tipo de persona debe ser Física o Moral',
 
-            'regimen_fiscal_id.required' => 'El régimen fiscal es obligatorio',
             'regimen_fiscal_id.exists' => 'El régimen fiscal seleccionado no existe',
 
             'nombre_fisica.string' => 'El nombre debe ser texto',
@@ -132,7 +131,6 @@ class ClienteRequest extends FormRequest
             'rfc.string' => 'El RFC debe ser texto',
             'rfc.max' => 'El RFC no puede superar los 255 caracteres',
 
-            'repve.required' => 'El REPVE es obligatorio',
             'repve.string' => 'El REPVE debe ser texto',
             'repve.max' => 'El REPVE no puede superar los 255 caracteres',
 
