@@ -18,7 +18,7 @@ class Modelo extends Model
 
     public function clientes()
     {
-        return $this->hasMany(Cliente::class);
+        return $this->hasMany(Cliente::class, 'modelo_id');
     }
 
     public function marca()
