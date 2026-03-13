@@ -118,7 +118,7 @@ class ContactosController extends Controller
     {
         return $request->validate(
             [
-                'distribuidor_id' => 'required|exists:cli_distribuidores,id',
+                'distribuidor_id' => 'required|exists:cli_clientes,id',
                 'puesto_id' => 'required|exists:cli_puestos,id',
                 'nombre' => 'required|string|max:255',
                 'correo' => 'nullable|string|email|max:255',

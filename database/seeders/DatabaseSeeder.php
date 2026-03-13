@@ -17,7 +17,9 @@ class DatabaseSeeder extends Seeder
             DepartamentosSeeder::class,
             PuestosSeeder::class,
             TiposClientesSeeder::class,
-            RegimenesFiscalesSeeder::class
+            RegimenesFiscalesSeeder::class,
+            MarcasSeeder::class,
+            ModelosSeeder::class
         ]);
     }
 }

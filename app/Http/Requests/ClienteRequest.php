@@ -45,7 +45,7 @@ class ClienteRequest extends FormRequest
             'estatus' => 'required|in:Activo,Desarrollo,Inactivo',
             'tipo_negocio' => 'required|in:Matriz,Sucursal',
 
-            'matriz_id' => 'nullable|exists:cli_distribuidores,id',
+            'matriz_id' => 'nullable|exists:cli_clientes,id',
 
             'telefono' => 'required|string|max:20',
             'telefono_alt' => 'nullable|string|max:20',

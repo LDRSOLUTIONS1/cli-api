@@ -245,7 +245,7 @@ class ClientesController extends Controller
             ->with([
                 'puesto:id,nombre,departamento_id',
                 'puesto.departamento:id,nombre',
-                'distribuidor:id,nombre_comercial'
+                'cliente:id,nombre_comercial'
             ])
             ->whereIn('distribuidor_id', $ids)
             ->get();
@@ -378,7 +378,7 @@ class ClientesController extends Controller
             ->with([
                 'puesto:id,nombre,departamento_id',
                 'puesto.departamento:id,nombre',
-                'distribuidor:id,nombre_comercial'
+                'cliente:id,nombre_comercial'
             ])
             ->whereIn('distribuidor_id', $ids)
             ->get();

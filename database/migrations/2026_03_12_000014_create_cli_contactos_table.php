@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('correo', 150)->nullable();
             $table->string('extension', 20)->nullable();
             $table->string('telefono', 20)->nullable();
-            $table->tinyInteger('estatus')->nullable();
+            $table->enum('estatus', ['Activo', 'ND', 'Inactivo'])->default('Activo');
 
             $table->timestamp('fecha_registro')->useCurrent();
             $table->tinyInteger('estado')
