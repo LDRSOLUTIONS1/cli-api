@@ -5,15 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class RegionalGrupoModelo extends Model
+class Puesto extends Model
 {
-    protected $table = 'cli_regional_grupo';
+    protected $table = 'cli_puestos';
     public $timestamps = false;
 
     protected $fillable = [
-        'regional_id',
-        'grupo_id',
+        'departamento_id',
+        'nombre',
+        'descripcion',
         'fecha_registro',
         'estado'
     ];
+
+    public function departamento()
+    {
+        return $this->belongsTo(Departamento::class);
+    }
 }

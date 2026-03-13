@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ClientesModel;
-use App\Models\ContactosModel;
+use App\Models\Cliente;
+use App\Models\Contacto;
 use App\Http\Requests\ClienteRequest;
 use Illuminate\Support\Facades\DB;
 
-    class ClientesController extends Controller
+class ClientesController extends Controller
 {
     public function index()
     {
-        $clientes = ClientesModel::with([
+        $clientes = Cliente::with([
             'grupo:id,nombre',
             'direcciones' => function ($q) {
                 $q->select('id', 'distribuidor_id', 'estado_id');
@@ -73,7 +73,7 @@ use Illuminate\Support\Facades\DB;
         DB::beginTransaction();
 
         try {
-            $cliente = ClientesModel::create($validated);
+            $cliente = Cliente::create($validated);
 
             //MODELOS
             if ($request->filled('modelo')) {
@@ -124,7 +124,7 @@ use Illuminate\Support\Facades\DB;
     public function show($id)
     {
 
-        $cliente = ClientesModel::with([
+        $cliente = Cliente::with([
             'matriz' => function ($query) {
                 $query->select(
                     'id',
@@ -224,14 +224,14 @@ use Illuminate\Support\Facades\DB;
 
         if ($cliente->tipo_negocio === 'Matriz') {
 
-            $ids = ClientesModel::where('matriz_id', $cliente->id)
+            $ids = Cliente::where('matriz_id', $cliente->id)
                 ->pluck('id')
                 ->push($cliente->id);
         } else {
             $ids = collect([$cliente->id]);
         }
 
-        $contactos = ContactosModel::select(
+        $contactos = Contacto::select(
             'id',
             'distribuidor_id',
             'nombre',
@@ -257,7 +257,7 @@ use Illuminate\Support\Facades\DB;
 
     public function clientesEditar($id)
     {
-        $cliente = ClientesModel::with([
+        $cliente = Cliente::with([
             'matriz' => function ($query) {
                 $query->select(
                     'id',
@@ -357,14 +357,14 @@ use Illuminate\Support\Facades\DB;
 
         if ($cliente->tipo_negocio === 'Matriz') {
 
-            $ids = ClientesModel::where('matriz_id', $cliente->id)
+            $ids = Cliente::where('matriz_id', $cliente->id)
                 ->pluck('id')
                 ->push($cliente->id);
         } else {
             $ids = collect([$cliente->id]);
         }
 
-        $contactos = ContactosModel::select(
+        $contactos = Contacto::select(
             'id',
             'distribuidor_id',
             'nombre',
@@ -393,7 +393,7 @@ use Illuminate\Support\Facades\DB;
         DB::beginTransaction();
 
         try {
-            $cliente = ClientesModel::findOrFail($id);
+            $cliente = Cliente::findOrFail($id);
 
             $cliente->update($request->validated());
 
@@ -449,7 +449,7 @@ use Illuminate\Support\Facades\DB;
 
     public function destroy($id)
     {
-        $cliente = ClientesModel::where('id', $id)
+        $cliente = Cliente::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

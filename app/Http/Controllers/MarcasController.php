@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MarcasModel;
+use App\Models\Marca;
 use Illuminate\Http\Request;
 
 class MarcasController extends Controller
 {
     public function index()
     {
-        $marcas = MarcasModel::select(
+        $marcas = Marca::select(
             'id',
             'nombre',
             'codigo',
@@ -27,7 +27,7 @@ class MarcasController extends Controller
     {
         $validated = $this->validateMarca($request);
 
-        $marca = MarcasModel::create($validated);
+        $marca = Marca::create($validated);
 
         return response()->json([
             'message' => 'Marca creada correctamente',
@@ -37,7 +37,7 @@ class MarcasController extends Controller
 
     public function show($id)
     {
-        $marca = MarcasModel::select(
+        $marca = Marca::select(
             'id',
             'nombre',
             'codigo',
@@ -53,7 +53,7 @@ class MarcasController extends Controller
 
     public function update(Request $request, $id)
     {
-        $marca = MarcasModel::where('id', $id)
+        $marca = Marca::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -69,7 +69,7 @@ class MarcasController extends Controller
 
     public function destroy($id)
     {
-        $marca = MarcasModel::where('id', $id)
+        $marca = Marca::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

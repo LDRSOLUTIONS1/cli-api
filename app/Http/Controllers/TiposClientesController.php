@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TiposClientesModel;
+use App\Models\TipoCliente;
 use Illuminate\Http\Request;
 
 class TiposClientesController extends Controller
 {
     public function index()
     {
-        $tiposdeclientes = TiposClientesModel::select(
+        $tiposdeclientes = TipoCliente::select(
             'id',
             'nombre',
             'descripcion',
@@ -27,7 +27,7 @@ class TiposClientesController extends Controller
     {
         $validated = $this->validateTipoCliente($request);
 
-        $tipocliente = TiposClientesModel::create($validated);
+        $tipocliente = TipoCliente::create($validated);
 
         return response()->json([
             'message' => 'Tipo de cliente creado correctamente',
@@ -35,40 +35,9 @@ class TiposClientesController extends Controller
         ], 201);
     }
 
-    public function sshow($id)
-    {
-        $tipocliente = TiposClientesModel::with([
-            'clientes' => function ($q) {
-                $q->select(
-                    'id',
-                    'tipo_cliente_id',
-                    'grupo_id',
-                    'razon_social',
-                    'tipo_persona',
-                    'nombre_comercial',
-                    'plaza',
-                    'tipo_negocio',
-                    'estado'
-                );
-            },
-            'clientes.grupo:id,nombre',
-        ])
-            ->select('id', 'nombre', 'descripcion', 'fecha_registro', 'estado')
-            ->where('id', $id)
-            ->first();
-
-        if (!$tipocliente) {
-            return response()->json([
-                'error' => 'Tipo de cliente no encontrado'
-            ], 404);
-        }
-
-        return response()->json($tipocliente, 200);
-    }
-
     public function show($id)
     {
-        $tipocliente = TiposClientesModel::with([
+        $tipocliente = TipoCliente::with([
             'clientes' => function ($q) {
                 $q->select(
                     'id',
@@ -135,7 +104,7 @@ class TiposClientesController extends Controller
 
     public function update(Request $request, $id)
     {
-        $tipocliente = TiposClientesModel::where('id', $id)
+        $tipocliente = TipoCliente::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -157,7 +126,7 @@ class TiposClientesController extends Controller
 
     public function destroy($id)
     {
-        $tipocliente = TiposClientesModel::where('id', $id)
+        $tipocliente = TipoCliente::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -179,7 +148,7 @@ class TiposClientesController extends Controller
     {
         return $request->validate(
             [
-                'nombre' => 'required|string|max:255|unique:cli_tipos_cliente,nombre,' . $id,
+                'nombre' => 'required|string|max:255|unique:cli_tipos_clientes,nombre,' . $id,
                 'descripcion' => 'nullable|string|max:255',
             ],
             [

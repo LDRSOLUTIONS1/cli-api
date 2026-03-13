@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PuestosModel;
+use App\Models\Puesto;
 use Illuminate\Http\Request;
 
 class PuestosController extends Controller
 {
     public function index()
     {
-        $puestos = PuestosModel::with([
+        $puestos = Puesto::with([
             'departamento:id,nombre'
         ])
             ->select(
@@ -41,7 +41,7 @@ class PuestosController extends Controller
     {
         $validated = $this->validatePuesto($request);
 
-        $puesto = PuestosModel::create($validated);
+        $puesto = Puesto::create($validated);
 
         return response()->json([
             'message' => 'Puesto creado correctamente',
@@ -51,7 +51,7 @@ class PuestosController extends Controller
 
     public function show($id)
     {
-        $puesto = PuestosModel::with('departamento:id,nombre as nombre_departamento')->select(
+        $puesto = Puesto::with('departamento:id,nombre as nombre_departamento')->select(
             'id',
             'departamento_id',
             'nombre',
@@ -68,7 +68,7 @@ class PuestosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $puesto = PuestosModel::where('id', $id)
+        $puesto = Puesto::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -90,7 +90,7 @@ class PuestosController extends Controller
 
     public function destroy($id)
     {
-        $puesto = PuestosModel::where('id', $id)
+        $puesto = Puesto::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

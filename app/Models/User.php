@@ -12,18 +12,39 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'users';
+    protected $table = 'cli_users';
+    public $timestamps = false;
 
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-    protected $keyType = 'int';
+    const ADMIN = 1;
+    const USER = 2;
 
     protected $fillable = [
-        'nombres',
         'numcolaborador',
+        'nombres',
         'apellidos',
         'telefono',
         'email_user',
         'password',
+        'rolid',
+        'remember_token',
+        'fecha_registro',
+        'estado',
     ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+        'fecha_registro',
+        'estado',
+    ];
+
+    public function tiposCliente()
+    {
+        return $this->belongsToMany(
+            TipoCliente::class,
+            'user_tipo_cliente',
+            'user_id',
+            'tipo_cliente_id'
+        );
+    }
 }

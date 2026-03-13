@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegimenesFiscalesModel;
-use Illuminate\Http\Request;
+use App\Models\RegimenFiscal;
 
 class RegimenesFiscalesController extends Controller
 {
     public function getByTipoPersona($tipoPersona = null)
     {
-        $query = RegimenesFiscalesModel::where('estado', 2);
+        $query = RegimenFiscal::where('estado', 2);
 
         if ($tipoPersona == "1") {
             $query->where('persona_fisica', 'Sí');

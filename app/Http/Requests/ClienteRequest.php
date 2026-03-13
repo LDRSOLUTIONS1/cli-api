@@ -17,7 +17,7 @@ class ClienteRequest extends FormRequest
 
         return [
             'marca_id' => 'required|exists:cli_marcas,id',
-            'tipo_cliente_id' => 'required|exists:cli_tipos_cliente,id',
+            'tipo_cliente_id' => 'required|exists:cli_tipos_clientes,id',
             'tipo_persona' => 'required|in:1,2',
             'regimen_fiscal_id' => 'nullable|exists:cli_regimenes_fiscales,id',
 
@@ -91,7 +91,7 @@ class ClienteRequest extends FormRequest
             'tipo_persona.required' => 'El tipo de persona es obligatorio',
             'tipo_persona.in' => 'El tipo de persona debe ser Física o Moral',
 
-            'regimen_fiscal_id.exists' => 'El régimen fiscal seleccionado no existe',
+            'regimen_fiscal_id.exists' => 'El regimen fiscal seleccionado no existe',
 
             'nombre_fisica.string' => 'El nombre debe ser texto',
             'nombre_fisica.max' => 'El nombre no puede superar los 255 caracteres',

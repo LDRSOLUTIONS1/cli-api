@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ModelosModel;
+use App\Models\Modelo;
 use Illuminate\Http\Request;
 
 class ModelosController extends Controller
@@ -10,7 +10,7 @@ class ModelosController extends Controller
 
     public function index()
     {
-        $modelos = ModelosModel::select(
+        $modelos = Modelo::select(
             'id',
             'marca_id',
             'nombre',
@@ -25,7 +25,7 @@ class ModelosController extends Controller
     {
         $validated = $this->validateModelo($request);
 
-        $modelo = ModelosModel::create($validated);
+        $modelo = Modelo::create($validated);
 
         return response()->json([
             'message' => 'Modelo creado correctamente',
@@ -35,7 +35,7 @@ class ModelosController extends Controller
 
     public function show($id)
     {
-        $modelo = ModelosModel::select(
+        $modelo = Modelo::select(
             'id',
             'marca_id',
             'nombre',
@@ -51,7 +51,7 @@ class ModelosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $modelo = ModelosModel::where('id', $id)
+        $modelo = Modelo::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -73,7 +73,7 @@ class ModelosController extends Controller
 
     public function destroy($id)
     {
-        $modelo = ModelosModel::where('id', $id)
+        $modelo = Modelo::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

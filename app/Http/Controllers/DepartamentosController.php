@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DepartamentosModel;
+use App\Models\Departamento;
 use Illuminate\Http\Request;
 
 class DepartamentosController extends Controller
 {
     public function index()
     {
-        $departamentos = DepartamentosModel::select(
+        $departamentos = Departamento::select(
             'id',
             'nombre',
             'descripcion',
@@ -24,7 +24,7 @@ class DepartamentosController extends Controller
     {
         $validated = $this->validateDepartamento($request);
 
-        $departamento = DepartamentosModel::create($validated);
+        $departamento = Departamento::create($validated);
 
         return response()->json([
             'message' => 'Departamento creado correctamente',
@@ -34,7 +34,7 @@ class DepartamentosController extends Controller
 
     public function show($id)
     {
-        $departamento = DepartamentosModel::select(
+        $departamento = Departamento::select(
             'id',
             'nombre',
             'descripcion',
@@ -50,7 +50,7 @@ class DepartamentosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $departamento = DepartamentosModel::where('id', $id)
+        $departamento = Departamento::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -72,7 +72,7 @@ class DepartamentosController extends Controller
 
     public function destroy($id)
     {
-        $departamento = DepartamentosModel::where('id', $id)
+        $departamento = Departamento::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

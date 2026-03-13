@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\GruposModel;
+use App\Models\Grupo;
 use Illuminate\Http\Request;
 
 class GruposController extends Controller
 {
     public function index()
     {
-        $grupos = GruposModel::select(
+        $grupos = Grupo::select(
             'id',
             'codigo',
             'nombre',
@@ -25,7 +25,7 @@ class GruposController extends Controller
     {
         $validated = $this->validateGrupo($request);
 
-        $grupo = GruposModel::create($validated);
+        $grupo = Grupo::create($validated);
 
         return response()->json([
             'message' => 'Grupo creado correctamente',
@@ -36,7 +36,7 @@ class GruposController extends Controller
     public function show($id)
     {
 
-        $grupo = GruposModel::with([
+        $grupo = Grupo::with([
             'clientes:id,grupo_id,nombre_comercial,razon_social,rfc,telefono,plaza'
         ])
             ->select('id', 'codigo', 'nombre', 'descripcion', 'fecha_registro', 'estado',)
@@ -54,7 +54,7 @@ class GruposController extends Controller
 
     public function update(Request $request, $id)
     {
-        $grupo = GruposModel::where('id', $id)
+        $grupo = Grupo::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -76,7 +76,7 @@ class GruposController extends Controller
 
     public function destroy($id)
     {
-        $grupo = GruposModel::where('id', $id)
+        $grupo = Grupo::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

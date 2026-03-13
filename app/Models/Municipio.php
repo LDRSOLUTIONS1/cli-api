@@ -4,22 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MunicipioModel extends Model
+class Municipio extends Model
 {
     protected $table = 'cli_municipios';
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'estado_id',
         'nombre',
         'fecha_registro',
-        'estado',
+        'estado'
     ];
 
-    // Un municipio pertenece a un estado
     public function estado()
     {
-        return $this->belongsTo(EstadoModel::class, 'estado_id');
+        return $this->belongsTo(Estado::class, 'estado_id');
     }
 }

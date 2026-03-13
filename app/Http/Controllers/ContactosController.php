@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ContactosModel;
-use Illuminate\Auth\Events\Validated;
+use App\Models\Contacto;
 use Illuminate\Http\Request;
 
 class ContactosController extends Controller
 {
     public function index()
     {
-        $contactos = ContactosModel::with([
-            'distribuidor:id,nombre_comercial',
+        $contactos = Contacto::with([
+            'cliente:id,nombre_comercial',
             'puesto:id,nombre'
         ])
             ->select(
@@ -32,7 +31,7 @@ class ContactosController extends Controller
 
                 return [
                     'id' => $contacto->id,
-                    'distribuidor' => $contacto->distribuidor?->nombre_comercial,
+                    'distribuidor' => $contacto->cliente?->nombre_comercial,
                     'distribuidor_id' => $contacto->distribuidor_id,
                     'puesto' => $contacto->puesto?->nombre,
                     'nombre' => $contacto->nombre,
@@ -52,7 +51,7 @@ class ContactosController extends Controller
     {
         $validated = $this->validateContacto($request);
 
-        $contacto = ContactosModel::create($validated);
+        $contacto = Contacto::create($validated);
 
         return response()->json([
             'message' => 'Contacto creado correctamente',
@@ -62,8 +61,8 @@ class ContactosController extends Controller
 
     public function show($id)
     {
-        $contacto = ContactosModel::with([
-            'distribuidor:id,nombre_comercial',
+        $contacto = Contacto::with([
+            'cliente:id,nombre_comercial',
             'puesto:id,nombre'
         ])
             ->select(
@@ -88,7 +87,7 @@ class ContactosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $contacto = ContactosModel::where('id', $id)
+        $contacto = Contacto::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -104,7 +103,7 @@ class ContactosController extends Controller
 
     public function destroy($id)
     {
-        $contacto = ContactosModel::where('id', $id)
+        $contacto = Contacto::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RegionalesModel;
+use App\Models\Regional;
 use Illuminate\Http\Request;
 
 class RegionalesController extends Controller
 {
     public function index()
     {
-        $regionales = RegionalesModel::select(
+        $regionales = Regional::select(
             'id',
             'nombre',
             'apellido_paterno',
@@ -27,7 +27,7 @@ class RegionalesController extends Controller
     {
         $validated = $this->validateRegional($request);
 
-        $regional = RegionalesModel::create($validated);
+        $regional = Regional::create($validated);
 
         return response()->json([
             'message' => 'Regional creado correctamente',
@@ -37,7 +37,7 @@ class RegionalesController extends Controller
 
     public function show($id)
     {
-        $regional = RegionalesModel::select(
+        $regional = Regional::select(
             'id',
             'nombre',
             'apellido_paterno',
@@ -56,7 +56,7 @@ class RegionalesController extends Controller
 
     public function update(Request $request, $id)
     {
-        $regional = RegionalesModel::where('id', $id)
+        $regional = Regional::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 
@@ -78,7 +78,7 @@ class RegionalesController extends Controller
 
     public function destroy($id)
     {
-        $regional = RegionalesModel::where('id', $id)
+        $regional = Regional::where('id', $id)
             ->where('estado', '!=', 0)
             ->firstOrFail();
 

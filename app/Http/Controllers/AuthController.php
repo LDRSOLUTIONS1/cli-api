@@ -45,7 +45,11 @@ class AuthController extends Controller
                 'apellidos' => $user->apellidos,
                 'telefono' => $user->telefono,
                 'email_user' => $user->email_user,
+                'password' => $user->password,
                 'rolid' => $user->rolid,
+                'remember_token' => $user->remember_token,
+                'fecha_registro' => $user->fecha_registro,
+                'estado' => $user->estado
             ]
         ], 200);
     }

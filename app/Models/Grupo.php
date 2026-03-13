@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TiposClientesModel extends Model
+class Grupo extends Model
 {
-    protected $table = 'cli_tipos_cliente';
+    protected $table = 'cli_grupos';
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
+        'codigo',
         'nombre',
         'descripcion',
         'fecha_registro',
-        'estado',
+        'estado'
     ];
 
     public function clientes()
     {
-        return $this->hasMany(ClientesModel::class, 'tipo_cliente_id');
+        return $this->hasMany(Cliente::class, 'grupo_id');
     }
 }

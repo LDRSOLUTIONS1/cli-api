@@ -4,22 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PaisModel extends Model
+class Pais extends Model
 {
     protected $table = 'cli_paises';
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'nombre',
         'codigo_iso',
         'fecha_registro',
-        'estado',
+        'estado'
     ];
 
-    // Un país tiene muchos estados
     public function estados()
     {
-        return $this->hasMany(EstadoModel::class, 'pais_id');
+        return $this->hasMany(Estado::class, 'pais_id');
     }
 }

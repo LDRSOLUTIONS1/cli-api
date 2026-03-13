@@ -4,13 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DireccionesModel extends Model
+class ClienteDireccionFiscal extends Model
 {
-    protected $table = 'cli_distribuidor_direcciones';
+    protected $table = 'cli_clientes_direcciones_fiscales';
     public $timestamps = false;
 
     protected $fillable = [
-        'id',
         'distribuidor_id',
         'tipo',
         'calle',
@@ -24,29 +23,29 @@ class DireccionesModel extends Model
         'latitud',
         'longitud',
         'fecha_registro',
-        'estado',
+        'estado'
     ];
 
     public function distribuidor()
     {
-        return $this->belongsTo(ClientesModel::class, 'distribuidor_id');
+        return $this->belongsTo(Cliente::class, 'distribuidor_id');
     }
 
     // Una direcion perteenece a un país
     public function pais()
     {
-        return $this->belongsTo(PaisModel::class, 'pais_id');
+        return $this->belongsTo(Pais::class, 'pais_id');
     }
 
     // Una direcion perteenece a un estado
     public function estado()
     {
-        return $this->belongsTo(EstadoModel::class, 'estado_id');
+        return $this->belongsTo(Estado::class, 'estado_id');
     }
 
     // Una direcion perteenece a un municipio
     public function municipio()
     {
-        return $this->belongsTo(MunicipioModel::class, 'municipio_id');
+        return $this->belongsTo(Municipio::class, 'municipio_id');
     }
 }
