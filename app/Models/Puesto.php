@@ -18,6 +18,11 @@ class Puesto extends Model
         'estado'
     ];
 
+    public function contactos()
+    {
+        return $this->hasMany(Contacto::class, 'puesto_id');
+    }
+
     public function departamento()
     {
         return $this->belongsTo(Departamento::class);
