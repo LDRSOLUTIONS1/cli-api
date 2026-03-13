@@ -16,6 +16,11 @@ class Modelo extends Model
         'estado'
     ];
 
+    public function clientes()
+    {
+        return $this->hasMany(Cliente::class);
+    }
+
     public function marca()
     {
         return $this->belongsTo(ClienteMarca::class);
