@@ -13,7 +13,7 @@ class ModelosController extends Controller
         $modelos = Modelo::select(
             'id',
             'marca_id',
-            'nombre',
+            'nombre',   
             'fecha_registro',
             'estado'
         )->where('estado', '!=', 0)->get();
@@ -94,7 +94,7 @@ class ModelosController extends Controller
     {
         return $request->validate(
             [
-                'nombre' => 'required|string|max:255|unique:cli_regionales,nombre,' . $id,
+                'nombre' => 'required|string|max:255|unique:cli_modelos,nombre,' . $id,
             ],
             [
                 'nombre.required' => 'El nombre es obligatorio',

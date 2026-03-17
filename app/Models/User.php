@@ -42,7 +42,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(
             TipoCliente::class,
-            'user_tipo_cliente',
+            'cli_user_tipo_cliente',
             'user_id',
             'tipo_cliente_id'
         );

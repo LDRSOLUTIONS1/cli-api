@@ -40,6 +40,7 @@ class ClientesController extends Controller
                 'estado'
             )
             ->where('estado', '!=', 0)
+            ->visibleParaUsuario()
             ->get()
             ->map(function ($cliente) {
 

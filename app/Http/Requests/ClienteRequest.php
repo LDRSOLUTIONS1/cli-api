@@ -53,7 +53,7 @@ class ClienteRequest extends FormRequest
             'modelo' => 'required|array',
             'modelo.*' => 'exists:cli_modelos,id',
 
-            'regional' => 'required|array',
+            'regional' => 'nullable|array',
             'regional.*' => 'exists:cli_regionales,id',
 
             'direccion_principal.tipo' => 'required|string',
@@ -161,9 +161,8 @@ class ClienteRequest extends FormRequest
             'modelo.array' => 'El modelo debe ser una lista válida',
             'modelo.*.exists' => 'Uno de los modelos seleccionados no existe',
 
-            'regional.required' => 'Debe seleccionar al menos una regional',
             'regional.array' => 'La regional debe ser una lista válida',
-            'regional.*.exists' => 'Una de las regionales seleccionadas no existe',
+            'regional.*.exists' => 'Uno de los regionales seleccionados no existe',
 
             'direccion_principal.tipo.required' => 'El tipo de dirección principal es obligatorio',
             'direccion_principal.tipo.string' => 'El tipo de dirección principal debe ser texto',

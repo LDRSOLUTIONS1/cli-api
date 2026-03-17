@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class Cliente extends Model
 {
@@ -129,5 +131,18 @@ class Cliente extends Model
             'distribuidor_id',
             'marca_id',
         );
+    }
+
+    public function scopeVisibleParaUsuario(Builder $query)
+    {
+        $user = Auth::user();
+
+        if ($user->rolid == User::ADMIN) {
+            return $query;
+        }
+
+        $tipos = $user->tiposCliente()->pluck('tipo_cliente_id');
+
+        return $query->whereIn('tipo_cliente_id', $tipos);
     }
 }

@@ -18,7 +18,12 @@ class Modelo extends Model
 
     public function clientes()
     {
-        return $this->hasMany(Cliente::class, 'modelo_id');
+        return $this->belongsToMany(
+            Cliente::class,
+            'cli_clientes_modelos',
+            'modelo_id',
+            'distribuidor_id'
+        );
     }
 
     public function marca()

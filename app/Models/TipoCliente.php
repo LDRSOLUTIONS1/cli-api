@@ -25,7 +25,7 @@ class TipoCliente extends Model
     {
         return $this->belongsToMany(
             User::class,
-            'user_tipo_cliente',
+            'cli_user_tipo_cliente',
             'tipo_cliente_id',
             'user_id'
         );
