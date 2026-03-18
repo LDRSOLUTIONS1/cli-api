@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('numcolaborador');
             $table->string('nombres');
             $table->string('apellidos');
-            $table->string('telefono');
+            $table->string('telefono')->nullable();
             $table->string('email_user')->unique();
             $table->string('password');
             $table->tinyInteger('rolid');

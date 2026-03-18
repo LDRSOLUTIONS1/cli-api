@@ -15,8 +15,12 @@ class User extends Authenticatable
     protected $table = 'cli_users';
     public $timestamps = false;
 
-    const ADMIN = 1;
-    const USER = 2;
+    const SUPER_ADMIN = 1;
+    const ADMINISTRADOR = 2;
+    const INTERNO_USER = 3;
+    const EXTERNO_USER = 4;
+    const GUBERNAMENTAL_USER = 5;
+    const DISTRIBUIDOR_USER = 6;
 
     protected $fillable = [
         'numcolaborador',
@@ -34,8 +38,6 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'fecha_registro',
-        'estado',
     ];
 
     public function tiposCliente()

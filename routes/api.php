@@ -14,6 +14,7 @@ use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PuestosController;
 use App\Http\Controllers\RegimenesFiscalesController;
+use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login/{numcolaborador}', [AuthController::class, 'login']);
@@ -28,6 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/contactos', ContactosController::class);
     Route::resource('/puestos', PuestosController::class);
     Route::resource('/departamentos', DepartamentosController::class);
+    Route::resource('/usuarios', UsuariosController::class);
 
     Route::get(
         '/regimenes-fiscales/{tipoPersona?}',
@@ -41,6 +43,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/municipios/estado/{estado_id}', [MunicipiosController::class, 'getByEstado']);
 
     Route::get('/clientes/editar/{id}', [ClientesController::class, 'clientesEditar']);
+
+    Route::post('/users/{id}', [UsuariosController::class, 'asignarTipoCliente']);
 
     Route::get('/user', [AuthController::class, 'user']);
 });

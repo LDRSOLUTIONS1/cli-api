@@ -137,7 +137,8 @@ class Cliente extends Model
     {
         $user = Auth::user();
 
-        if ($user->rolid == User::ADMIN) {
+        // Si el usuario es SUPER_ADMIN y ADMINISTRADOR, se muestran toda la información
+        if ($user->rolid == User::SUPER_ADMIN || $user->rolid == User::ADMINISTRADOR) {
             return $query;
         }
 

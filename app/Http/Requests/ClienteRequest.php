@@ -32,25 +32,25 @@ class ClienteRequest extends FormRequest
 
             'correo' => 'nullable|email|max:255',
 
-            'grupo_id' => 'required|exists:cli_grupos,id',
+            'grupo_id' => 'nullable|exists:cli_grupos,id',
 
-            'nombre_comercial' => 'required|string|max:255',
+            'nombre_comercial' => 'nullable|string|max:255',
             'razon_social' => 'required|string|max:255',
-            'rfc' => 'required|string|max:255',
+            'rfc' => 'nullable|string|max:255',
 
             'repve' => 'nullable|string|max:255',
-            'plaza' => 'required|string|max:255',
-            'clasificacion' => 'required|string|max:255',
+            'plaza' => 'nullable|string|max:255',
+            'clasificacion' => 'nullable|string|max:255',
 
-            'estatus' => 'required|in:Activo,Desarrollo,Inactivo',
-            'tipo_negocio' => 'required|in:Matriz,Sucursal',
+            'estatus' => 'nullable|in:Activo,Desarrollo,Inactivo',
+            'tipo_negocio' => 'nullable|in:Matriz,Sucursal',
 
             'matriz_id' => 'nullable|exists:cli_clientes,id',
 
             'telefono' => 'required|string|max:20',
             'telefono_alt' => 'nullable|string|max:20',
 
-            'modelo' => 'required|array',
+            'modelo' => 'nullable|array',
             'modelo.*' => 'exists:cli_modelos,id',
 
             'regional' => 'nullable|array',
@@ -116,10 +116,8 @@ class ClienteRequest extends FormRequest
             'correo.email' => 'El correo no es válido',
             'correo.max' => 'El correo no puede superar los 255 caracteres',
 
-            'grupo_id.required' => 'El grupo es obligatorio',
             'grupo_id.exists' => 'El grupo seleccionado no existe',
 
-            'nombre_comercial.required' => 'El nombre comercial es obligatorio',
             'nombre_comercial.string' => 'El nombre comercial debe ser texto',
             'nombre_comercial.max' => 'El nombre comercial no puede superar los 255 caracteres',
 
@@ -127,25 +125,20 @@ class ClienteRequest extends FormRequest
             'razon_social.string' => 'La razón social debe ser texto',
             'razon_social.max' => 'La razón social no puede superar los 255 caracteres',
 
-            'rfc.required' => 'El RFC es obligatorio',
             'rfc.string' => 'El RFC debe ser texto',
             'rfc.max' => 'El RFC no puede superar los 255 caracteres',
 
             'repve.string' => 'El REPVE debe ser texto',
             'repve.max' => 'El REPVE no puede superar los 255 caracteres',
 
-            'plaza.required' => 'La plaza es obligatoria',
             'plaza.string' => 'La plaza debe ser texto',
             'plaza.max' => 'La plaza no puede superar los 255 caracteres',
 
-            'clasificacion.required' => 'La clasificación es obligatoria',
             'clasificacion.string' => 'La clasificación debe ser texto',
             'clasificacion.max' => 'La clasificación no puede superar los 255 caracteres',
 
-            'estatus.required' => 'El estatus es obligatorio',
             'estatus.in' => 'El estatus debe ser Activo, Desarrollo o Inactivo',
 
-            'tipo_negocio.required' => 'El tipo de negocio es obligatorio',
             'tipo_negocio.in' => 'El tipo de negocio debe ser Matriz o Sucursal',
 
             'matriz_id.exists' => 'La matriz seleccionada no existe',
@@ -157,7 +150,6 @@ class ClienteRequest extends FormRequest
             'telefono_alt.string' => 'El teléfono alternativo debe ser texto',
             'telefono_alt.max' => 'El teléfono alternativo no puede superar los 20 caracteres',
 
-            'modelo.required' => 'Debe seleccionar al menos un modelo',
             'modelo.array' => 'El modelo debe ser una lista válida',
             'modelo.*.exists' => 'Uno de los modelos seleccionados no existe',
 

@@ -12,29 +12,29 @@ class TiposClientesSeeder extends Seeder
         DB::table('cli_tipos_clientes')->insert([
             [
                 'id' => 1,
-                'nombre' => 'Clientes Internos',
-                'descripcion' => 'Clientes Internos',
+                'nombre' => 'Internos',
+                'descripcion' => 'Internos',
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
             [
                 'id' => 2,
-                'nombre' => 'Clientes Externos',
-                'descripcion' => 'Clientes Externos',
+                'nombre' => 'Externos',
+                'descripcion' => 'Externos',
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
             [
                 'id' => 3,
-                'nombre' => 'Clientes Gubernamentales',
-                'descripcion' => 'Clientes Gubernamentales',
+                'nombre' => 'Gubernamentales',
+                'descripcion' => 'Gubernamentales',
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
             [
                 'id' => 4,
-                'nombre' => 'Clientes Distribuidores',
-                'descripcion' => 'Clientes Distribuidores',
+                'nombre' => 'Distribuidores',
+                'descripcion' => 'Distribuidores',
                 'fecha_registro' => now(),
                 'estado' => 2
             ]

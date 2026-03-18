@@ -11,43 +11,54 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('cli_users')->insert([
-            // ADMIN
+            // SUPER ADMIN
             [
-                'numcolaborador' => '12345',
-                'nombres' => 'Admin',
-                'apellidos' => 'Sistema',
+                'numcolaborador' => '11111',
+                'nombres' => 'Carlos',
+                'apellidos' => 'Ramírez Torres',
                 'telefono' => '5550000001',
-                'email_user' => 'admin@empresa.com',
+                'email_user' => 'carlos.ramirez@empresa.com',
                 'password' => Hash::make('password'),
                 'rolid' => 1,
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
-            // USUARIOS DISTRIBUIDORES
+            // ADMINISTRADOR
             [
-                'numcolaborador' => '54321',
-                'nombres' => 'Pedro',
-                'apellidos' => 'Lopez',
+                'numcolaborador' => '22222',
+                'nombres' => 'Laura',
+                'apellidos' => 'Hernández López',
                 'telefono' => '5550000002',
-                'email_user' => 'pedro@empresa.com',
+                'email_user' => 'laura.hernandez@empresa.com',
                 'password' => Hash::make('password'),
                 'rolid' => 2,
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
-            // USUARIOS GUBERNAMENTALES
+            // USUARIO GUBERNAMENTAL
             [
-                'numcolaborador' => '98765',
+                'numcolaborador' => '33333',
                 'nombres' => 'Ana',
-                'apellidos' => 'Perez',
-                'telefono' => '5550000007',
-                'email_user' => 'ana@empresa.com',
+                'apellidos' => 'Pérez Gómez',
+                'telefono' => '5550000003',
+                'email_user' => 'ana.perez@empresa.com',
                 'password' => Hash::make('password'),
-                'rolid' => 2,
+                'rolid' => 5,
                 'fecha_registro' => now(),
                 'estado' => 2
-            ]
-
+            ],
+            // USUARIO DISTRIBUIDOR
+            [
+                'numcolaborador' => '44444',
+                'nombres' => 'Pedro',
+                'apellidos' => 'López Martínez',
+                'telefono' => '5550000004',
+                'email_user' => 'pedro.lopez@empresa.com',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
         ]);
     }
 }
