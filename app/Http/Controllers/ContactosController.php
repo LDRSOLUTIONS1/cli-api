@@ -10,7 +10,7 @@ class ContactosController extends Controller
     public function index()
     {
         $contactos = Contacto::with([
-            'cliente:id,nombre_comercial',
+            'cliente:id,nombre_comercial,razon_social',
             'puesto:id,nombre'
         ])
             ->select(
@@ -31,7 +31,7 @@ class ContactosController extends Controller
 
                 return [
                     'id' => $contacto->id,
-                    'distribuidor' => $contacto->cliente?->nombre_comercial,
+                    'distribuidor' => $contacto->cliente?->nombre_comercial ?? $contacto->cliente?->razon_social,
                     'distribuidor_id' => $contacto->distribuidor_id,
                     'puesto' => $contacto->puesto?->nombre,
                     'nombre' => $contacto->nombre,
