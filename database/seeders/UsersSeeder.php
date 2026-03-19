@@ -13,11 +13,11 @@ class UsersSeeder extends Seeder
         DB::table('cli_users')->insert([
             // SUPER ADMIN
             [
-                'numcolaborador' => '11111',
-                'nombres' => 'Carlos',
-                'apellidos' => 'Ramírez Torres',
-                'telefono' => '5550000001',
-                'email_user' => 'carlos.ramirez@empresa.com',
+                'numcolaborador' => '250852',
+                'nombres' => 'LUIS ANGEL',
+                'apellidos' => 'ESPINOZA MAURO',
+                'telefono' => '7291623408',
+                'email_user' => 'luis.espinoza@ldrsolutions.com.mx',
                 'password' => Hash::make('password'),
                 'rolid' => 1,
                 'fecha_registro' => now(),
@@ -25,11 +25,11 @@ class UsersSeeder extends Seeder
             ],
             // ADMINISTRADOR
             [
-                'numcolaborador' => '22222',
-                'nombres' => 'Laura',
-                'apellidos' => 'Hernández López',
-                'telefono' => '5550000002',
-                'email_user' => 'laura.hernandez@empresa.com',
+                'numcolaborador' => '12345',
+                'nombres' => 'ADMIN',
+                'apellidos' => 'ADMIN',
+                'telefono' => '0123456789',
+                'email_user' => 'admin@ldrsolutions.com.mx',
                 'password' => Hash::make('password'),
                 'rolid' => 2,
                 'fecha_registro' => now(),
@@ -37,11 +37,11 @@ class UsersSeeder extends Seeder
             ],
             // USUARIO GUBERNAMENTAL
             [
-                'numcolaborador' => '33333',
-                'nombres' => 'Ana',
-                'apellidos' => 'Pérez Gómez',
-                'telefono' => '5550000003',
-                'email_user' => 'ana.perez@empresa.com',
+                'numcolaborador' => '240389',
+                'nombres' => 'ISAURA IVETTE',
+                'apellidos' => 'HERNANDEZ BRAVO',
+                'telefono' => '3331758127',
+                'email_user' => 'isaura.hernandez@ldrsolutions.com.mx',
                 'password' => Hash::make('password'),
                 'rolid' => 5,
                 'fecha_registro' => now(),
@@ -49,16 +49,17 @@ class UsersSeeder extends Seeder
             ],
             // USUARIO DISTRIBUIDOR
             [
-                'numcolaborador' => '44444',
-                'nombres' => 'Pedro',
-                'apellidos' => 'López Martínez',
-                'telefono' => '5550000004',
-                'email_user' => 'pedro.lopez@empresa.com',
+                'numcolaborador' => '230202',
+                'nombres' => 'JORGE ISAAC',
+                'apellidos' => 'SANCHEZ PEREZ',
+                'telefono' => '3332013933',
+                'email_user' => 'jorge.sanchez@ldrsolutions.com.mx',
                 'password' => Hash::make('password'),
                 'rolid' => 6,
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
+
         ]);
     }
 }
