@@ -62,7 +62,7 @@ class ContactosController extends Controller
     public function show($id)
     {
         $contacto = Contacto::with([
-            'cliente:id,nombre_comercial',
+            'cliente:id,nombre_comercial,razon_social',
             'puesto:id,nombre'
         ])
             ->select(
