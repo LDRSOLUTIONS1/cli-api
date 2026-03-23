@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('distribuidor_id')->nullable()->constrained('cli_clientes');
 
-            $table->enum('tipo', ['Comercial', 'Taller', 'Sucursal']);
+            $table->enum('tipo', ['Comercial', 'Taller', 'Sucursal'])->nullable();
             $table->string('calle', 150);
             $table->string('numero_ext', 20)->nullable();
             $table->string('numero_int', 20)->nullable();

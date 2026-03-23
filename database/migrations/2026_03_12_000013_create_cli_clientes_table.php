@@ -40,6 +40,9 @@ return new class extends Migration
             $table->string('telefono', 20)->nullable();
             $table->string('telefono_alt', 20)->nullable();
 
+            $table->string('no_licitacion')->nullable();
+            $table->string('no_contrato')->nullable();
+
             $table->timestamp('fecha_registro')->useCurrent();
             $table->tinyInteger('estado')
                 ->default(2)

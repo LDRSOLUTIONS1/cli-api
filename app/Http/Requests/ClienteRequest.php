@@ -50,13 +50,16 @@ class ClienteRequest extends FormRequest
             'telefono' => 'required|string|max:20',
             'telefono_alt' => 'nullable|string|max:20',
 
+            'no_licitacion' => 'nullable|string|max:255',
+            'no_contrato' => 'nullable|string|max:255',
+
             'modelo' => 'nullable|array',
             'modelo.*' => 'exists:cli_modelos,id',
 
             'regional' => 'nullable|array',
             'regional.*' => 'exists:cli_regionales,id',
 
-            'direccion_principal.tipo' => 'required|string',
+            'direccion_principal.tipo' => 'nullable|string',
             'direccion_principal.calle' => 'required|string|max:255',
             'direccion_principal.numero_ext' => 'required|string|max:50',
             'direccion_principal.numero_int' => 'nullable|string|max:50',
@@ -66,7 +69,7 @@ class ClienteRequest extends FormRequest
             'direccion_principal.estado_id' => 'required|exists:cli_estados,id',
             'direccion_principal.municipio_id' => 'required|exists:cli_municipios,id',
 
-            'direccion_fiscal.tipo' => 'required|string',
+            'direccion_fiscal.tipo' => 'nullable|string',
             'direccion_fiscal.calle' => 'required|string|max:255',
             'direccion_fiscal.numero_ext' => 'required|string|max:50',
             'direccion_fiscal.numero_int' => 'nullable|string|max:50',
@@ -156,9 +159,6 @@ class ClienteRequest extends FormRequest
             'regional.array' => 'La regional debe ser una lista válida',
             'regional.*.exists' => 'Uno de los regionales seleccionados no existe',
 
-            'direccion_principal.tipo.required' => 'El tipo de dirección principal es obligatorio',
-            'direccion_principal.tipo.string' => 'El tipo de dirección principal debe ser texto',
-
             'direccion_principal.calle.required' => 'La calle de la dirección principal es obligatoria',
             'direccion_principal.calle.string' => 'La calle de la dirección principal debe ser texto',
             'direccion_principal.calle.max' => 'La calle de la dirección principal no puede superar los 255 caracteres',
@@ -186,9 +186,6 @@ class ClienteRequest extends FormRequest
 
             'direccion_principal.municipio_id.required' => 'El municipio de la dirección principal es obligatorio',
             'direccion_principal.municipio_id.exists' => 'El municipio de la dirección principal no existe',
-
-            'direccion_fiscal.tipo.required' => 'El tipo de dirección fiscal es obligatorio',
-            'direccion_fiscal.tipo.string' => 'El tipo de dirección fiscal debe ser texto',
 
             'direccion_fiscal.calle.required' => 'La calle de la dirección fiscal es obligatoria',
             'direccion_fiscal.calle.string' => 'La calle de la dirección fiscal debe ser texto',
