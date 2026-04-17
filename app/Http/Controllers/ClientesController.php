@@ -67,6 +67,13 @@ class ClientesController extends Controller
         return response()->json($clientes, 200);
     }
 
+    public function GetClientes()
+    {
+        $clientes = Cliente::all();
+
+        return response()->json($clientes, 200);
+    }
+
     public function store(ClienteRequest $request)
     {
         $validated = $request->validated();

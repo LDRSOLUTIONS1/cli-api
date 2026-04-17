@@ -7,34 +7,24 @@ use Illuminate\Support\Facades\DB;
 
 class ModelosSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         DB::table('cli_modelos')->insert([
             [
-                'id'      => 1,
                 'marca_id' => 1,
-                'nombre'  => 'Pick Ups',
+                'nombre' => 'P&V, LDT & MDT, HDT',
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
             [
-                'id'      => 2,
                 'marca_id' => 1,
-                'nombre'  => 'Vanes',
+                'nombre' => 'LDT & MDT, HDT',
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
             [
-                'id'      => 3,
                 'marca_id' => 1,
-                'nombre'  => 'Vehículos Comerciales',
-                'fecha_registro' => now(),
-                'estado' => 2
-            ],
-            [
-                'id'      => 4,
-                'marca_id' => 1,
-                'nombre'  => 'Camiones',
+                'nombre' => 'P&V',
                 'fecha_registro' => now(),
                 'estado' => 2
             ]

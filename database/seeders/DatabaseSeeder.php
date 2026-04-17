@@ -13,13 +13,15 @@ class DatabaseSeeder extends Seeder
             RegionesSeeder::class,
             PaisesSeeder::class,
             EstadosSeeder::class,
-            MunicipiosSeeder::class,
+            MunicipiosSeeder::class,x|
             DepartamentosSeeder::class,
             PuestosSeeder::class,
             TiposClientesSeeder::class,
             RegimenesFiscalesSeeder::class,
             MarcasSeeder::class,
-            ModelosSeeder::class
+            ModelosSeeder::class,
+            GruposSeeder::class,
+            RegionalesSeeder::class,
         ]);
     }
 }

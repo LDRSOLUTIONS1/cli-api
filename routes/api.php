@@ -46,5 +46,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('/users/{id}', [UsuariosController::class, 'asignarTipoCliente']);
 
+    Route::get('/GetClientes', [ClientesController::class, 'GetClientes']);
     Route::get('/user', [AuthController::class, 'user']);
 });
