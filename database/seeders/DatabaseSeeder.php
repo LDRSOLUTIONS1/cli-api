@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
             RegionesSeeder::class,
             PaisesSeeder::class,
             EstadosSeeder::class,
-            MunicipiosSeeder::class,x|
+            MunicipiosSeeder::class,
             DepartamentosSeeder::class,
             PuestosSeeder::class,
             TiposClientesSeeder::class,
