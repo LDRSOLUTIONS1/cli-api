@@ -42,7 +42,7 @@ class ClienteRequest extends FormRequest
             'plaza' => 'nullable|string|max:255',
             'clasificacion' => 'nullable|string|max:255',
 
-            'estatus' => 'nullable|in:Activo,Desarrollo,Inactivo',
+            'estatus' => 'nullable|in:Activo,Desarrollo,Inactivo,Stand By',
             'tipo_negocio' => 'nullable|in:Matriz,Sucursal',
 
             'matriz_id' => 'nullable|exists:cli_clientes,id',
