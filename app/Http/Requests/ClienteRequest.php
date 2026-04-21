@@ -140,7 +140,7 @@ class ClienteRequest extends FormRequest
             'clasificacion.string' => 'La clasificación debe ser texto',
             'clasificacion.max' => 'La clasificación no puede superar los 255 caracteres',
 
-            'estatus.in' => 'El estatus debe ser Activo, Desarrollo o Inactivo',
+            'estatus.in' => 'El estatus debe ser Activo, Desarrollo, Inactivo o Stand By',
 
             'tipo_negocio.in' => 'El tipo de negocio debe ser Matriz o Sucursal',
 
