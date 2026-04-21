@@ -47,7 +47,7 @@ class ClienteRequest extends FormRequest
 
             'matriz_id' => 'nullable|exists:cli_clientes,id',
 
-            'telefono' => 'required|string|max:20',
+            'telefono' => 'nullable|string|max:20',
             'telefono_alt' => 'nullable|string|max:20',
 
             'no_licitacion' => 'nullable|string|max:255',
@@ -146,7 +146,6 @@ class ClienteRequest extends FormRequest
 
             'matriz_id.exists' => 'La matriz seleccionada no existe',
 
-            'telefono.required' => 'El teléfono es obligatorio',
             'telefono.string' => 'El teléfono debe ser texto',
             'telefono.max' => 'El teléfono no puede superar los 20 caracteres',
 
