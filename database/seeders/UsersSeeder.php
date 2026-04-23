@@ -60,6 +60,119 @@ class UsersSeeder extends Seeder
                 'estado' => 2
             ],
 
+            // USUARIOS NUEVOS
+
+            [
+                'numcolaborador' => '250881',
+                'nombres' => 'DULCE KARLA',
+                'apellidos' => 'MONTERO JARAMILLO',
+                'telefono' => null,
+                'email_user' => 'dulce.montero@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 5,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '251021',
+                'nombres' => 'JONATHAN',
+                'apellidos' => 'GUERRERO SOTELO',
+                'telefono' => null,
+                'email_user' => 'jonathan.guerrero@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 5,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '250716',
+                'nombres' => 'ISRAEL',
+                'apellidos' => 'LOPEZ PADILLA',
+                'telefono' => null,
+                'email_user' => 'israel.lopez@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 5,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '240326',
+                'nombres' => 'MARCO ANTONIO',
+                'apellidos' => 'VASQUEZ MARTINEZ',
+                'telefono' => null,
+                'email_user' => 'marco.vasquez@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '250663',
+                'nombres' => 'RENE',
+                'apellidos' => 'DIAZ SANCHEZ',
+                'telefono' => null,
+                'email_user' => 'rene.diaz@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '240620',
+                'nombres' => 'LUIS AXEL',
+                'apellidos' => 'AGUILAR AREVALO',
+                'telefono' => null,
+                'email_user' => 'luis.aguilar@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '240585',
+                'nombres' => 'SOFIA',
+                'apellidos' => 'MENCHACA WIESBACH',
+                'telefono' => null,
+                'email_user' => 'sofia.menchaca@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '240522',
+                'nombres' => 'AXEL',
+                'apellidos' => 'GUZMAN VALLEJO',
+                'telefono' => null,
+                'email_user' => 'axel.guzman@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '230226',
+                'nombres' => 'ARTURO DANIEL',
+                'apellidos' => 'VARGAS MACIAS',
+                'telefono' => null,
+                'email_user' => 'arturo.vargas@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 6,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+            [
+                'numcolaborador' => '230144',
+                'nombres' => 'KARLA BERENICE',
+                'apellidos' => 'ALDANA HERNANDEZ',
+                'telefono' => null,
+                'email_user' => 'karla.aldana@ldrsolutions.com.mx',
+                'password' => Hash::make('password'),
+                'rolid' => 4,
+                'fecha_registro' => now(),
+                'estado' => 2
+            ],
+
         ]);
     }
 }
