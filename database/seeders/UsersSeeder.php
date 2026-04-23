@@ -11,7 +11,6 @@ class UsersSeeder extends Seeder
     public function run()
     {
         DB::table('cli_users')->insert([
-            // SUPER ADMIN
             [
                 'numcolaborador' => '250852',
                 'nombres' => 'LUIS ANGEL',
@@ -23,19 +22,6 @@ class UsersSeeder extends Seeder
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
-            // ADMINISTRADOR
-            [
-                'numcolaborador' => '12345',
-                'nombres' => 'ADMIN',
-                'apellidos' => 'ADMIN',
-                'telefono' => '0123456789',
-                'email_user' => 'admin@ldrsolutions.com.mx',
-                'password' => Hash::make('password'),
-                'rolid' => 2,
-                'fecha_registro' => now(),
-                'estado' => 2
-            ],
-            // USUARIO GUBERNAMENTAL
             [
                 'numcolaborador' => '240389',
                 'nombres' => 'ISAURA IVETTE',
@@ -43,11 +29,10 @@ class UsersSeeder extends Seeder
                 'telefono' => '3331758127',
                 'email_user' => 'isaura.hernandez@ldrsolutions.com.mx',
                 'password' => Hash::make('password'),
-                'rolid' => 5,
+                'rolid' => 2,
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
-            // USUARIO DISTRIBUIDOR
             [
                 'numcolaborador' => '230202',
                 'nombres' => 'JORGE ISAAC',
@@ -55,13 +40,10 @@ class UsersSeeder extends Seeder
                 'telefono' => '3332013933',
                 'email_user' => 'jorge.sanchez@ldrsolutions.com.mx',
                 'password' => Hash::make('password'),
-                'rolid' => 6,
+                'rolid' => 2,
                 'fecha_registro' => now(),
                 'estado' => 2
             ],
-
-            // USUARIOS NUEVOS
-
             [
                 'numcolaborador' => '250881',
                 'nombres' => 'DULCE KARLA',
