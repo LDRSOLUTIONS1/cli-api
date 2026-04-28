@@ -21,6 +21,7 @@ class User extends Authenticatable
     const EXTERNO_USER = 4;
     const GUBERNAMENTAL_USER = 5;
     const DISTRIBUIDOR_USER = 6;
+    const CONSULTOR = 7;    
 
     protected $fillable = [
         'numcolaborador',

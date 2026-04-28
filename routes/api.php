@@ -10,6 +10,7 @@ use App\Http\Controllers\ModelosController;
 use App\Http\Controllers\ContactosController;
 use App\Http\Controllers\DepartamentosController;
 use App\Http\Controllers\EstadosController;
+use App\Http\Controllers\GraficasController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\PaisesController;
 use App\Http\Controllers\PuestosController;
@@ -48,4 +49,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/GetClientes', [ClientesController::class, 'GetClientes']);
     Route::get('/user', [AuthController::class, 'user']);
+
+    Route::get('/clientesPorTipo', [GraficasController::class, 'clientesPorTipo']);
 });

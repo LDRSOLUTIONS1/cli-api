@@ -47,6 +47,10 @@ class TiposClientesController extends Controller
                     'tipo_persona',
                     'nombre_comercial',
                     'plaza',
+                    'clasificacion',
+                    'rfc',
+                    'telefono',
+                    'estatus',
                     'tipo_negocio',
                     'estado'
                 );
@@ -93,6 +97,10 @@ class TiposClientesController extends Controller
                 'tipo_persona' => $cliente->tipo_persona,
                 'nombre_comercial' => $cliente->nombre_comercial,
                 'plaza' => $cliente->plaza,
+                'clasificacion' => $cliente->clasificacion,
+                'rfc' => $cliente->rfc,
+                'telefono' => $cliente->telefono,
+                'estatus' => $cliente->estatus,
                 'tipo_negocio' => $cliente->tipo_negocio,
                 'estado' => $cliente->estado,
                 'region' => $region,

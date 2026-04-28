@@ -37,7 +37,9 @@ class ClientesController extends Controller
                 'nombre_comercial',
                 'plaza',
                 'clasificacion',
+                'estatus',
                 'rfc',
+                'telefono',
                 'tipo_negocio',
                 'estado'
             )
@@ -62,6 +64,8 @@ class ClientesController extends Controller
                     'plaza' => $cliente->plaza,
                     'clasificacion' => $cliente->clasificacion,
                     'rfc' => $cliente->rfc,
+                    'telefono' => $cliente->telefono,
+                    'estatus' => $cliente->estatus,
                     'tipo_negocio' => $cliente->tipo_negocio,
                     'estado' => $cliente->estado,
                     'region' => $region,

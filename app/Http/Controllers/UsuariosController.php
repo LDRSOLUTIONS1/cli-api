@@ -104,7 +104,7 @@ class UsuariosController extends Controller
                 'apellidos' => 'required|string|max:255',
                 'telefono' => 'nullable|string|max:100',
                 'email_user' => 'required|string|email|max:255|unique:cli_users,email_user,' . $id,
-                'rolid' => 'required|integer|in:1,2,3,4,5,6',
+                'rolid' => 'required|integer|in:1,2,3,4,5,6,7',
                 'password' => 'nullable|string|min:6'
             ],
             [
