@@ -51,4 +51,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [AuthController::class, 'user']);
 
     Route::get('/clientesPorTipo', [GraficasController::class, 'clientesPorTipo']);
+
+    Route::get('/distribuidores', [ClientesController::class, 'distribuidores']);
 });

@@ -75,6 +75,16 @@ class ClientesController extends Controller
         return response()->json($clientes, 200);
     }
 
+    public function distribuidores()
+    {
+        $distribuidores = Cliente::select('id', 'nombre_comercial', 'razon_social')
+            ->where('tipo_cliente_id', 4)
+            ->where('estado', '!=', 0)
+            ->get();
+
+        return response()->json($distribuidores, 200);
+    }
+
     public function GetClientes()
     {
         $clientes = Cliente::all();
