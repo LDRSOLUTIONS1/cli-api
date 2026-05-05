@@ -19,6 +19,7 @@ use App\Http\Controllers\UsuariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login/{numcolaborador}', [AuthController::class, 'login']);
+Route::get('/distribuidores', [ClientesController::class, 'distribuidores']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::resource('/marcas', MarcasController::class);
@@ -52,5 +53,4 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/clientesPorTipo', [GraficasController::class, 'clientesPorTipo']);
 
-    Route::get('/distribuidores', [ClientesController::class, 'distribuidores']);
 });
