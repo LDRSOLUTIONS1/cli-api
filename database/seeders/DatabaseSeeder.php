@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             ModelosSeeder::class,
             GruposSeeder::class,
             RegionalesSeeder::class,
+            ContactosSeeder::class
         ]);
     }
 }

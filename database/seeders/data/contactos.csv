@@ -1,0 +1,520 @@
+distribuidor_id,puesto_id,nombre,correo,telefono
+1,14,Adahan Casas ,administracion@foton-nayarit.com,311 122 7393
+1,13,Adahan Casas ,administracion@foton-nayarit.com,311 122 7393
+1,1,Yosemitte Lorena Casas,yos.casas2000@gmail.com,311 909 6490
+1,2,null,null,null
+1,3,Luz isela jacobo solis,Lucy.jacobo@fotonnayarit.com,324 196 2248
+1,5,null,null,null
+1,6,null,null,null
+1,4,Genesis Alejandra Gutierrez Garcia,genesis.gutierrez@foton-nayarit.com,311 743 7553
+1,7,Rodolfo Pedroza Bernal,rodolfo.pedroza@fotonnayarit.com,333 489 8666
+1,8,null,null,null
+1,9,null,null,null
+1,10,Gerardo Miramontes Cardenas,null,null
+1,11,null,null,null
+1,12,Sergio Flores,null,311 237 7478
+2,14,Manuel Martínez Raful,mm@grupoasturcar.com,222 577 4140
+2,13,Manuel Martínez Raful,mm@grupoasturcar.com,222 577 4140
+2,1,Araceli Mendez ,araceli.mendez@grupoasturcar.com,222 675 2543
+2,2,Jesus Verdiguel,jesus.verdiguel@grupoasturcar.com,222 973 0675
+2,3,Maricela Mendieta Caro,maricela.mendieta@grupoasturcar.com,222 973 0675
+2,5,Alexis González Torres,sistemas.corp@grupoasturcar.com,222 973 0675
+2,6,Cesar Peraldi,cesar.peraldi@grupoasturcar.com,442 173 2144
+2,4,null,null,null
+2,7,null,null,null
+2,8,null,null,null
+2,9,null,null,null
+2,10,Bladimir Ruiz Manuel,refacciones.foton@grupoasturcar.com,222 350 9570
+2,11,Jorge Lillo Ahuacatitan ,gtepvta.foton@grupoasturcar.com,222 248 4049
+2,12,null,null,null
+3,14,Rafael Diaz Leal,rafaeldiazleal@gicmexico.com,55 3224 1506
+3,13,Edgar Arturo Meza Martinez ,eameza@astrofoton.mx,722 160 3689
+3,1,Edgar Arturo Meza Martinez ,eameza@astrofoton.mx,722 160 3689
+3,2,null,null,null
+3,3,Gabriela Villa Diaz,gvilla@astrofoton.mx,722 466 0301
+3,5,Antonio Benítez López,abenitez@astrofoton.mx,722 394 6376
+3,6,null,null,null
+3,4,null,null,null
+3,7,Francisco Barcenas Vázquez ,fbarcenas@astrofoton.mx,722 160 1166
+3,8,null,null,null
+3,9,null,null,null
+3,10,José Abacuc Bustos Osorio,jbustos@astrocamiones.com.mx,777 480 5935
+3,11,Isaac Romero Hernandez,iromero@astrofoton.mx,722 687 2007
+3,12,Juan de Jesús Barreto González,jbarreto@astrofoton.mx,722 350 5312
+4,14,Fernando Bours,fernandobourss@hotmail.com,644 168 0568
+4,13,Martin Alberto Moreno Valenzuela,alberto.moreno@cytson.com,662 256 7134
+4,1,Javier Muñoz,javier.munoz@cytson.com,662 317 6710
+4,2,Esthela Flores,esthela.flores@cytson.com,662 470 9584
+4,3,Miriam Armenta,cxc@cytson.com,662 151 9536
+4,5,Eduardo Sánchez,sistemas@cytson.com,644 127 0647
+4,6,null,null,null
+4,4,Angel Juzaino,angel.juzaino@cytson.com,662 138 0668
+4,7,Jesús Sasteaga,jesus.sesteaga@cytson.com,662 111 0595
+4,8,null,null,null
+4,9,Bernaldino Sandoval,bernaldino.sandoval@cytson.com,644 236 4056
+4,10,Alberto Tellez,gerenterefacciones.hillo@cytson.com,662 256 7893
+4,11,Carlos Espinoza,carlos.espinoza@cytson.com,662 225 0953
+4,12,null,null,null
+5,14,Fernando Bours,fernandobourss@hotmail.com,644 168 0568
+5,13,Martin Alberto Moreno Valenzuela,alberto.moreno@cytson.com,662 256 7134
+5,1,Javier Muñoz,javier.munoz@cytson.com,662 317 6710
+5,2,Esthela Flores,esthela.flores@cytson.com,662 470 9584
+5,3,Danna Guadalupe Paez,cxcfotonmochis@cytson.com,662 119 0154
+5,5,Eduardo Sánchez,sistemas@cytson.com,644 127 0647
+5,6,null,null,null
+5,4,null,null,null
+5,7,Jesus Alberto Cota,jesus.cota@cytson.com,6681691506
+5,8,null,null,null
+5,9,null,null,null
+5,10,Miguel Angel Zamora,jeferefaccionesfotonmochis@cytson.com,668 113 0708
+5,11,null,null,null
+5,12,Francisco Castro,jefetallerfotonmochis@cytson.com,668 164 2675
+6,14,Mauricio Barragán Esquivel,mbarragan@autosvial.com.mx,452 203 3200
+6,13,Mauricio Barragán Esquivel,mbarragan@autosvial.com.mx,452 203 3200
+6,1,Mauricio Baragán Esquivel,mbarragan@autosvial.com.mx,452 203 3200
+6,2,José Gabriel García Araujo,contralor.foton@burk-automotriz.com.mx,452 118 0416
+6,3,Ariana Yuritzi Gonzalez Valladares,contador.foton@burk-automotriz.com.mx,452 100 9971
+6,5,Miguel Carrillo Gutiérrez,sistemas.foton@burk-automotriz.com.mx,452 518 6826
+6,6,José Manuel Flores Ayala,crm.foton@burk-automotriz.com.mx ,452 154 7326
+6,4,null,null,null
+6,7,null,null,null
+6,8,null,null,null
+6,9,Samir Daud Contreras Ortiz,gerenteventas.fotonu@burk-automotriz.com.mx,452 203 7104
+6,10,null,null,null
+6,11,Ulises Mora,gerentepostventa.foton@burk-automotriz.com.mx,452 121 6261
+6,12,Eduardo Contreras Espejel ,jefetaller.fotonu@burk-automotriz.com.mx,452 173 0002
+7,14,Javier Sanchez Castañeda,javier.sanchez@camionesdelvalle.com,552 335 4982
+7,13,Javier Sanchez Castañeda,javier.sanchez@camionesdelvalle.com,552 335 4982
+7,1,Javier Sanchez Castañeda,javier.sanchez@camionesdelvalle.com,552 335 4982
+7,2,Carlos Moctezuma Flores,carlos.moctezuma@camionesdelvalle.com,237 119 2538
+7,3,Juan Manuel Hernandez Reyes,juan.hernandez@camionesdelvalle.com,557 660 8571
+7,5,José Daniel Ramirez Melgarejo,daniel.ramirez@camionesdelvalle.com,561 180 9582
+7,6,null,null,null
+7,4,Cristian Rodríguez Cortes,cristian.rodriguez@camionesdelvalle.com,558 242 1801
+7,7,Oscar De Vega Armijo,oscar.devega@camionesdelvalle.com,555 451 1656
+7,8,Sergio Isaac García Moreno,sergio.garcia@camionesdelvalle.com,555 155 8101
+7,9,null,null,null
+7,10,Daniel Antonio García Peralta,daniel.garcia@camionesdelvalle.com,551 958 3329
+7,11,Alvaro Carreón Gutierrrez,alvaro.carreon@camionesdelvalle.com,561 195 7139
+7,12,Edgar Alejandro Miranda Requena,alejandro.miranda@camionesdelvalle.com,561 195 7139
+9,14,Miguel Oscar Gutierrez Gutierrez,fotonlapaz@gmail.com,612 170 4367
+9,13,Miguel Oscar Gutierrez Gutierrez,fotonlapaz@gmail.com,612 170 4367
+9,1,Claudia Lizeth Gutierrez Briseño,fotonlapaz@gmail.com,612 159 1500
+9,2,null,null,null
+9,3,Elvia Natali Gonzalez Zumaya,gventasfotonlpz@gmail.com,612 167 6095
+9,5,null,null,null
+9,6,null,null,null
+9,4,null,null,null
+9,7,null,null,null
+9,8,null,null,null
+9,9,null,null,null
+9,10,null,null,null
+9,11,null,null,null
+9,12,Jesús Gabriel Romo Ramirez,romogabo@live.com,612 156 3919
+10,14,Cesar Augusto Deras Almodova,cesarderal@yahoo.com.mx,4921 443 739
+10,13,Cesar Augusto Deras Solano,cesarderasjr@hotmail.com,492 288 6077
+10,1,Cesar Augusto Deras Solano,cesarderasjr@hotmail.com,492 288 6077
+10,2,Juan Martin Hernandez Ramirez,gteadministrativo@fotonzac.com.mx,492 177 4722
+10,3,Ma. Del Rocio Puente Ascencio,auxcontable@fotonzac.com.mx ,499 102 1317
+10,5,Sergio René de la Torre Félix,rfelix@deral.com.mx,492 122 2066
+10,6,null,null,null
+10,4,null,null,null
+10,7,null,null,null
+10,8,Monica Avila Martinez,gteventas@fotonzac.com.mx,492 2020 221
+10,9,null,null,null
+10,10,Raquel Guadalupe Ruíz Rodríguez,reichruiz_85@hotmail.com,492 768 6111
+10,11,null,null,null
+10,12,Joel Trinidad Herrera ,joeltrinidad19@gmail.com,492 949 3061
+13,14,Alejandro Gamboa Torre,agamboa@enerkom.mx,999 949 4900
+13,13,Alejandro Gamboa Torre,agamboa@enerkom.mx,999 949 4900
+13,1,Juan Alberto Riveroll De Teresa,jriveroll@fotonpeninsula.com.mx,999 435 6023
+13,2,Ana Gabriela Escalante Quijano,admon@fotonpeninsula.com.mx ,999 394 3072
+13,3,Julio Jose Azcorra Pech,jazorra@enerkom.com.mx,999 940 6000
+13,5,Bernardo Jose Martin Martinez Perez,bmartinez@enerkom.com.mx,999 940 6000
+13,6,null,null,null
+13,4,Ericka Patricia Lira Jiménez,facturacion@fotonpeninsula.com.mx,999 255 1794
+13,7,null,null,null
+13,8,null,null,null
+13,9,null,null,null
+13,10,null,null,null
+13,11,Roger Humberto MezetaLópez,postventa@fotonpeninsula.com.mx,null
+13,12,Daniel de Jesus Gamboa Matos,null,null
+14,14,Alejandro Gamboa Torre,agamboa@enerkom.mx,999 949 4900
+14,13,Alejandro Gamboa Torre,agamboa@enerkom.mx,999 949 4900
+14,1,Nabor Cornelio Vidal,ncornelio@fotoncancun.com.mx,998 219 6016
+14,2,Ana Gabriela Escalante Quijano,admon@fotonpeninsula.com.mx ,999 394 3072
+14,3,Julio Jose Azcorra Pech,jazorra@enerkom.com.mx,999 940 6000
+14,5,Bernardo Jose Martin Martinez Perez,bmartinez@enerkom.com.mx,999 940 6000
+14,6,null,null,null
+14,4,null,null,null
+14,7,null,null,null
+14,8,null,null,null
+14,9,null,null,null
+14,10,null,null,null
+14,11,Gustavo García Gonzalez,postventa@fotoncancun.com.mx,999 357 0227
+14,12,null,null,null
+15,14,Alejandro Marín De la Torre,amarin@dichisa.com,962 529 4524
+15,13,Arturo Aguilar Ochoa,diroperaciones@gpomarin.com.mx,962 622 6973
+15,1,Juan Manuel Hernández Fernández,juan.hernandez@grumar.mx,962 622 6973
+15,2,Karen Lizbeth ALfaro Santiago,adventas_cargatap@grumar.mx,962 403 6427
+15,3,null,null,null
+15,5,Crhistian Eduardo Villarreal Villagran,sistemas@gpomarin.com.mx,962 622 5931
+15,6,null,null,null
+15,4,null,null,null
+15,7,null,null,null
+15,8,null,null,null
+15,9,null,null,null
+15,10,German Ledesma García,german.ledesma@grumar.mx,962 260 5637
+15,11,Luis Fernando Marroquín de Leon,gserviciotap@gpomarin.com.mx,962 152 6500
+15,12,Fernando Vega Arvizu,jtaller.cargatap@grumar.mx,962 622 5928
+16,14,Alejandro Marín De la Torre,amarin@dichisa.com,962 529 4524
+16,13,Arturo Aguilar Ochoa,diroperaciones@gpomarin.com.mx,961 318 3996
+16,1,Nestor Fabián Ruíz Esquinca,gcomercial_carga@gpomarin.com.mx,961 318 3996
+16,2,Madai Lourdes Molina Juárez,madai.molina@gpomarin.com.mx,962 152 9240
+16,3,Adriana Elizabeth Aguilar Chacón,adventastx_carga@gpomarin.com.mx,961 101 6160
+16,5,Rodolfo Isaí López Mérida,sistemas@gpomarin.com.mx,962 622 5931
+16,6,Alfonso Molina Nango,molina.nango@gmail.com,961 321 8704
+16,4,Yen Lin García Chang,yen.garcia@grumar.mx,961 216 1806
+16,7,Carlos Eduardo Villanueva Ulloa,carlos.villanueva@gpomarin.com.mx,966 109 5097
+16,8,Miguel Moreno Miceli,miguel.moreno@gpomarin.com.mx,961 225 0658
+16,9,null,null,961 225 0658
+16,10,Sergio Antonio Duque Trinidad,asesorgarantiascarga@gpomarin.com.mx,918 120 4073
+16,11,Eduardo Enrique Calderon Aguilar,gpostventa_carga@gpomarin.com.mx,961 603 3818
+17,12,Martín Eduardo Martínez Murillo,eduardo.martmur@gmail.com,333 553 7006
+17,14,Alejandro Marín De la Torre,amarin@dichisa.com,962 529 4524
+17,13,Arturo Aguilar Ochoa,diroperaciones@gpomarin.com.mx,99 3148 4975
+17,1,Juan Carlos Herrera Hernandez,juan.herrera@grumar.mx,993 144 4368
+17,2,Lucia Méndez Gómez,lucia.mendez@grumar.mx,99 3325 0358
+17,3,null,null,null
+17,5,null,null,null
+17,6,null,null,null
+17,4,null,null,null
+17,7,null,null,null
+17,8,null,null,null
+17,9,null,null,null
+17,10,Adrian Perez Palomeque,gerenterefacciones@gpomarin.com.mx,993 370 5230
+17,11,Miguel Alberto Velasco Lopez,"m.velasco@grumar,mx",999 639 1775
+17,12,Edgar Arturo Feria Lustre,edgar.feria@grumar.mx,993 210 0490
+18,14,Alejandro Marín De la Torre,amarin@dichisa.com,962 529 4524
+18,13,Arturo Aguilar Ochoa,diroperaciones@gpomarin.com.mx,551 046 5212
+18,1,Sarahi Ruiz Cuervo,sarahi.ruiz@gpomarin.com.mx,551 046 5212
+18,2,null,null,null
+18,3,Francisco Javier Espinoza ,francisco.espinoza@gpomarin.com.m,951 209 2396
+18,5,null,null,null
+18,6,null,null,null
+18,4,null,null,null
+18,7,Celeste Guadalupe Ramirez,celeste.ramirez@gpomarin.com.mx,951 260 3006
+18,8,Celeste Guadalupe Ramirez,celeste.ramirez@gpomarin.com.mx,951 260 3006
+18,9,null,null,951 260 3006
+18,10,Soledad Itzel Contreras Cruz,soledad.contreras@grumar.mx,951 424 3820
+18,11,Jaret Juarez Monterrubio,jaret.juarez@gpomarin.com.mx,951 333 9484
+18,12,Miguel Humberto Reyes Lopez,miguel.reyes@grumar.mx ,null
+19,14,Gerardo Vicente Hernández Pastor,gerardo.hernandez@grupomhautomotriz.com,449 205 3337
+19,13,Gerardo Daniel Hernandez Celorio,gerardodhernandez@grupomhautomotriz.com,449 413 9761
+19,1,Jose Luis Valdez Lopez,subdirector@mhautomotriz.mx,449 205 3337
+19,2,Damian Guzman,dguzman@renaultags.com.mx,449 260 6780
+19,3,Abril Garcia,contabilidad@chryslerzacatecas.mx,492 136 3961
+19,5,Antonio Hernandez ,null,331 971 6828
+19,6,null,null,null
+19,4,null,null,null
+19,7,null,null,null
+19,8,José Fernando Castellanos Sánchez,gerente.ventas@fotonaguascalientes.com,333 808 8804
+19,9,null,null,null
+19,10,Claudia Zaragoza Lopez,refacciones@fotonaguascalientes.com,449 288 9368
+19,11,German Azpeitia Benitez,gerente.hyp@mhautomotriz.mx,464 175 0329
+19,12,null,null,null
+24,14,Ricardo Lazaro Ordaz,rlazaro@fotongto.com,477 724 7989
+24,13,Ricardo Lazaro Ordaz,rlazaro@fotongto.com,477 724 7989
+24,1,Erika Perez Garnica ,gerente@fotongto.com,472 113 1837
+24,2,César Díaz ,administracion@fotongto.com ,477 306 8152
+24,3,César Díaz ,administracion@fotongto.com ,477 306 8152
+24,5,null,null,null
+24,6,Rachel Avril Gómez Hernández ,fotonleondigital@gmail.com,479 223 6031
+24,4,null,null,null
+24,7,null,null,null
+24,8,Edwin Iván Olivares Vidales,desarrollo@fotongto.com,4778 730 301
+24,9,null,null,null
+24,10,null,null,null
+24,11,Angel Arturo Toriz Andrade ,postventa@fotongto.com,477 465 3454
+24,12,null,null,null
+25,14,Francisco Rafael Zorrilla Alanis,rafaelz@policon.mx,222 285 9595
+25,13,Jaime Aportela,jaimea@policon.mx,222 5647734
+25,1,Gustavo Rosas Ruiz,gustavor@policon.mx,222 753 4990
+25,2,Pablo Cesar Arroyo Zarate,administracion@fotonpuebla.com,221 190 7923
+25,3,Guadalupe Rosales Curzio,gualupe@rosasgoiz.net,222 209 8912
+25,5,Ricardo Zepeda,ricardo@timx.mx,222 413 3831
+25,6,Miguel Ángel Ramirez Ruiz,mercadotecnia@policon.mx,222 794 4487
+25,4,Roberto Cuautle Muñoz,fianzasyseguros@fotonpuebla.com,222 720 5174
+25,7,null,null,null
+25,8,Esdras Cid Gutierrez,gerentecomercial@tlaxcala.mx,222 209 0688
+25,9,null,null,222 209 0688
+25,10,Maria Luisa Juarez Soria,facturacion@fotonpuebla.com,221 137 6058
+25,11,Heber Sanchez Porras,null,2216 267644
+25,12,null,null,null
+26,14,Francisco Rafael Zorrilla Alanis,rafaelz@policon.mx,222 720 2543
+26,13,Jaime Aportela,jaimea@policon.mx,222 5647734
+26,1,Gustavo Rosas Ruiz,gustavor@policon.mx,222 753 4990
+26,2,null,null,null
+26,3,Guadalupe Rosales Curzio,grcurzio@live.com.mx,222 209 8912
+26,5,Ricardo Zepeda,ricardo@timx.mx,222 413 3831
+26,6,null,null,null
+26,4,null,null,null
+26,7,null,null,null
+26,8,Marco Antonio Tostado Carrera,gerenciacomercial@fotontlaxcala.mx,782 130 5800
+26,9,null,null,782 130 5800
+26,10,null,null,null
+26,11,null,null,null
+26,12,null,null,null
+27,14,Francisco Rafael Zorrilla Alanis,rafaelz@policon.mx,222 720 2543
+27,13,Jaime Aportela,jaimea@policon.mx,222 5647734
+27,1,Gustavo Rosas Ruiz,gustavor@policon.mx,222 753 4990
+27,2,Pablo Cesar Arroyo Zarate,administracion@fotonpuebla.com,221 190 7923
+27,3,Guadalupe Rosales Curzio,gualupe@rosasgoiz.net,222 209 8912
+27,5,Ricardo Zepeda,ricardo@timx.mx,222 413 3831
+27,6,null,null,null
+27,4,null,null,null
+27,7,null,null,null
+27,8,Rene Vargas Elguea,gerenciacomercial@fotonmorelos.com,222 569 3551
+27,9,null,null,null
+27,10,null,null,null
+27,11,null,null,null
+27,12,null,null,null
+28,14,Eduardo Herminio Hernández Velasco,eduardoh@logisticalaboral.com.mx,551 850 2090
+28,13,Eduardo Herminio Hernández Velasco,eduardoh@logisticalaboral.com.mx,551 850 2090
+28,1,Adrian Hernanéz Ortega,adrianh@fotonqueretaro.mx,551 867 3804
+28,2,Daniel Coria ,administracion@fotonqueretaro.mx,55 1249 5181
+28,3,Muñiz Correa Fatima Ivet,"	fatima.m@logisticalaboral.com.mx",557 907 0311
+28,5,Fernando Rea ,null,null
+28,6,Alejandra Hernandez Beltran ,ale.hebea@hotmail.com,442 270 6451
+28,4,Norma Angelica Espinoza Capetillo ,enlacefinanciero@fotonqueretaro.mx,444 507 9836
+28,7,null,null,null
+28,8,Irvin Rogelio Cordero Islas ,irvincordero@fotonqueretaro.mx,222 132 9342
+28,9,null,null,null
+28,10,Emmanuel Cruz Hernández ,refacciones@fotonqueretaro.mx,555 293 6007
+28,11,Ordoñez Ortiz Alvaro,servicio@fotonqueretaro.mx,442 344 9296
+28,12,José Angel Gonzalez Pérez,null,null
+29,14,Eduardo Herminio Hernández Velasco,eduardoh@logisticalaboral.com.mx,551 850 2090
+29,13,Eduardo Herminio Hernández Velasco,eduardoh@logisticalaboral.com.mx,551 850 2090
+29,1,null,null,null
+29,2,Daniel Coria ,administracion@fotonqueretaro.mx,55 1249 5181
+29,3,Muñiz Correa Fatima Ivet,"	fatima.m@logisticalaboral.com.mx",55 7907 0311
+29,5,Fernando Rea ,null,null
+29,6,Aymee Abigail Piña Espindola ,ale.hebea@hotmail.com,442 270 6451
+29,4,null,null,null
+29,7,Adrian Hernanéz Ortega,adrianh@fotonqueretaro.mx,5518673804
+29,8,null,null,null
+29,9,Roy Gerardo Jimenez Linares,"royer.empresarial@gmail,com",442 877 4475
+29,10,null,null,null
+29,11,null,null,null
+29,12,null,null,null
+31,14,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+31,13,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+31,1,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+31,2,Lilia Escania Alegria Hernandez,direccion.administrativa@foton-metropolitanos.com,554 297 9342
+31,3,null,null,null
+31,5,Adriana Patricia Serrano Maguey,auxiliar.adm@foton-metropolitanos.com,551 340 4950
+31,6,Magali Cruz Hernandez,marketing@foton-metropolitanos.com,562 111 1636
+31,4,null,null,null
+31,7,null,null,null
+31,8,Cintia Jeanette Camarillo Garcia,ventas@foton-metropolitanos.com,552 119 9754
+31,9,Adriana Esparza Serrano,ventas2@foton-metropolitanos.com,449 768 8135
+31,10,Guillermo Martinez Argueta ,refacciones@foton-metropolitanos.com,556 360 3031
+31,11,Yazmin Luviano Morales,postventa@foton-metropolitanos.com,562 047 2171
+31,12,Alberto Hernandez Gomez,servicio@foton-metropolitanos.com,552 123 8563
+32,14,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+32,13,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+32,1,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+32,2,Lilia Escania Alegria Hernandez,direccion.administrativa@foton-metropolitanos.com,554 297 9342
+32,3,null,null, null
+32,5,Adriana Patricia Serrano Maguey,auxiliar.adm@foton-metropolitanos.com,551 340 4950
+32,6,Magali Cruz Hernandez,marketing@foton-metropolitanos.com,562 111 1636
+32,4,null,null,null
+32,7,null,null,null
+32,8,null,null,null
+32,9,null,null,null
+32,10,null,null,null
+32,11,null,null,null
+32,12,null,null,null
+33,14,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+33,13,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+33,1,Martha Karime Ruano Fonseca,direccion@foton-metropolitanos.com,555 106 1111
+33,2,Lilia Escania Alegria Hernandez,direccion.administrativa@foton-metropolitanos.com,554 297 9342
+33,3,null,null,null
+33,5,null,null,null
+33,6,Alejandra Guadalupe Perea Urbano ,ventas1@foton-metropolitanos.com,551 991 9960
+33,4,null,null,null
+33,7,null,null,null
+33,8,null,null,null
+33,9,null,null,null
+33,10,null,null,null
+33,11,null,null,null
+33,12,null,null,null
+34,14,Emiliano Diaz Yarza,ediaz@centralleasing.mx,444 204 4260
+34,13,Gustavo Lopez,glopez@vwtangamanga.com.mx,551 354 6560
+34,1,Raúl Serrano,gerencia@grupotangamanga.com.mx,444 411 3688
+34,2,Pedro Pablo Rasillo Aguirre,rasillop@vwtangamanga.com.mx,444 846 3127
+34,3,Ma. Teresa Flores Vega ,administracionslp@grupotangamanga.com.mx,444 846 3087
+34,5,Cesar Roberto Portales Oliveros,portalesc@vwtangamanga.com.mx,444 216 3736
+34,6,Ignacio Díaz de la Vega Guerrero,nach.diaz@novu.mx,555 217 2412
+34,4,null,null,null
+34,7,null,null,null
+34,8,Erick Elizalde Sánchez,gventas@grupotangamanga.com.mx,551 679 0479
+34,9,Fatima Anai Rocha Galicia ,ventas2@gtfoton.mx,444 711 2730
+34,10,null,null,null
+34,11,Gerardo Rivera Ramirez,gpostventa@grupotangamanga.com.mx,440 189 2717
+34,12,null,null,null
+35,14,José de Jesús Centeno Castro,jcenteno@jetvan.com.mx,812 621 8015
+35,13,José de Jesús Centeno Castro,jcenteno@jetvan.com.mx,812 621 8015
+35,1,Ciro Picardi ,ciro.picardi@foton-monterrey.com.mx,811 079 9815
+35,2,Maria Elena Castruita,mcastruita@jetvan.com.mx,811 637 0077
+35,3,Adriana Vera Rodríguez,avera@jetvan.com.mx,811 281 5941
+35,5,null,null,null
+35,6,Johan Jhosel Rodriguez Arriaga,marketing@foton-monterrey.com.mx,null
+35,4,Valeria Guadalupe Romero Luna,aux.enlacesfi@foton-monterrey.com.mx,812 935 6316
+35,7,null,null,null
+35,8,Grecia Regina Garcia Vargas,regina.garcia@foton-monterrey.com.mx,null
+35,9,Daniel Alberto Vazquez Mendez,daniel.mendez@foton-monterrey.com.mx,812 010 0984
+35,10,Edson Jhozimar Gaytan Rodriguez,gerente.refacciones@foton-monterrey.com.mx,null
+35,11,Lenin Brandon Reyes Alvarez,gerente.servicio@foton-monterrey.com.mx,null
+35,12,Juan Manuel Lopez Sustaita,jefe.taller@foton-monterrey.com.mx,831 177 4844
+36,14,José de Jesús Centeno Castro,jcenteno@jetvan.com.mx,812 621 8015
+36,13,José de Jesús Centeno Castro,jcenteno@jetvan.com.mx,812 621 8015
+36,1,Gilberto Mendoza Alarcon,gilberto.mendoza@foton-monterrey.com.mx,null
+36,2,Maria Elena Castruita,mcastruita@jetvan.com.mx,811 637 0077
+36,3,Adriana Vera Rodríguez,avera@jetvan.com.mx,811 281 5941
+36,5,null,null,null
+36,6,null,null,null
+36,4,Daniela Elidia Don Juan Garcia,auxiliarfi2@foton-monterrey.com.mx,812 731 9457
+36,7,null,null,null
+36,8,Cesar Daniel Alejandro Flores Mercado,null,81 2404 1411
+36,9,null,null,null
+36,10,null,null,null
+36,11,null,null,null
+36,12,Luis Antonio Escalona Juarez,supervisor@foton-monterrey.com.mx,81 3252 9972
+37,14,José de Jesús Centeno Castro,jcenteno@jetvan.com.mx,812 621 8015
+37,13,José de Jesús Centeno Castro,jcenteno@jetvan.com.mx,812 621 8015
+37,1,Gilberto Mendoza Alarcon,gilberto.mendoza@foton-monterrey.com.mx,null
+37,2,Maria Elena Castruita,mcastruita@jetvan.com.mx,811 637 0077
+37,3,Adriana Vera Rodríguez,avera@jetvan.com.mx,811 281 5941
+37,5,null,null,null
+37,6,null,null,null
+37,4,Daniela Elidia Don Juan Garcia,auxiliarfi2@foton-monterrey.com.mx,812 731 9457
+37,7,null,null,null
+37,8,Cesar Daniel Alejandro Flores Mercado,null,81 2404 1411
+37,9,null,null,null
+37,10,null,null,null
+37,11,null,null,null
+37,12,Luis Antonio Escalona Juarez,supervisor@foton-monterrey.com.mx,81 3252 9972
+22,14,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+22,13,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+22,1,null,null,null
+22,2,Nadia Ofelia Botello,administracion@ldrsolutions.com.mx,333 662 4576
+22,3,José Lopez,cobranza@ldrsolutions.com,332 876 3497
+22,5,null,null,null
+22,6,Humberto Baruc,marketing@xian-motors.com,332 876 3497
+22,4,Gerardo Mendez,gerardo.mendez@xian-motors.com,332 876 3497
+22,7,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+22,8,Karla Rodriguez,karla.rodriguez@ldrsolutions.com,332 876 3497
+22,9,Lilian Álvarez,lilian.alvarez@xian-motors.com,332 876 3497
+22,10,Daniel de Jesús Arellano,servicio1@xian-motors.com,332 876 3497
+22,11,Eduardo González,eduardo.ezequiel@xian-motors.com,332 876 3497
+22,12,Alejandro Arellano,null,332 876 3497
+39,14,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+39,13,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+39,1,Jesús Manzo,jesus.manzo@jimenezautocamiones.mx,331 990 9438
+39,2,Andrea Lemus,andrea.lemus@jimenezautocamiones.mx,331 966 1436
+39,3,Karen Avelar,karen.avelar@jimenezautocamiones.mx,null
+39,5,Fernando Urbina,fernando.urbina@jimenezautocamiones.mx,332 339 4455
+39,6,Joel Gómez,joel.gomez@jimenezautocamiones.mx,null
+39,4,Claudia Veronica Antolin,enlace.financiero@jimenezautocamiones.mx,333 167 5812
+39,7,null,null,null
+39,8,Juan Carlos Mondragón,jmondragon@jimenezautocamiones.mx,333 577 4757
+39,9,Ana Cecilia Castro,ccastro@jimenezautocamiones.mx,"333 370 9941
+"
+39,10,Heriberto Nezahualcoyotl Cabrera Barba,almacengg@jimenezautocamiones.mx,null
+39,11,Ernesto Sandoval,garantiasggallo@jimenezautocamiones.mx,null
+39,12,null,null,null
+40,14,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+40,13,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+40,1,Jesús Manzo,jesus.manzo@jimenezautocamiones.mx,331 990 9438
+40,2,Andrea Lemus,andrea.lemus@jimenezautocamiones.mx,null
+40,3,Karen Avelar,karen.avelar@jimenezautocamiones.mx,null
+40,5,Fernando Urbina,fernando.urbina@jimenezautocamiones.mx,332 339 4455
+40,6,Joel Gómez,joel.gomez@jimenezautocamiones.mx,null
+40,4,null,null,null
+40,7,null,null,null
+40,8,null,null,null
+40,9,null,null,null
+40,10,Irene Muñiz,imuniz@jimenezautocamiones.mx,null
+40,11,null,null,null
+40,12,null,null,null
+41,14,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+41,13,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+41,1,Oscar Ortiz Ursua,oortiz@jimenezautocamiones.mx,312 300 1975
+41,2,Andrea Lemus,andrea.lemus@jimenezautocamiones.mx,331 966 1436
+41,3,Karen Avelar,karen.avelar@jimenezautocamiones.mx,null
+41,5,Fernando Urbina,fernando.urbina@jimenezautocamiones.mx,332 339 4455
+41,6,Joel Gómez,joel.gomez@jimenezautocamiones.mx,null
+41,4,null,null,null
+41,7,null,null,null
+41,8,null,null,null
+41,9,null,null,null
+41,10,Arturo Chávez Román,achavez@jimenezautocamiones.mx,312 550 1446
+41,11,Noel Alonso Delgado,noel.alonso@jimenezautocamiones.mx,null
+41,12,José Angel Delgadillo,adelgadillo@jimenezautocamiones.mx,312 301 2106
+42,14,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+42,13,Fernando Javier Jiménez Ruiz,fjjimenez@jimenezautocamiones.mx,33 3189 5020
+42,1,Jesús Manzo,jesus.manzo@jimenezautocamiones.mx,331 990 9438
+42,2,Pablo Enrique Espinoza Zuñiga,eespinoza@jimenezautocamiones.mx,322 289 8166
+42,3,Karen Avelar,karen.avelar@jimenezautocamiones.mx,null
+42,5,Fernando Urbina,fernando.urbina@jimenezautocamiones.mx,332 339 4455
+42,6,Joel Gómez,joel.gomez@jimenezautocamiones.mx,null
+42,4,null,null,null
+42,7,null,null,null
+42,8,null,null,null
+42,9,null,null,null
+42,10,null,null,null
+42,11,null,null,null
+42,12,null,null,null
+49,14,David Marquéz Rivero,contacto@gcmilenio.com,55 7780 4335
+49,13,Karla Santillan Dominguez,adm_fotontula@outlook.com,56 1475 4047
+49,1,Karla Santillan Dominguez,adm_fotontula@outlook.com,56 1475 4047
+49,2,null,null,null
+49,3,Ma. Isabel Tesillo Rosales,isabel.tesillo@hotmail.com,553 529 0424
+49,5,Ivan Hernandez Varela,ivanhrdz_98@hotmail.com,null
+49,6,Esperanza Gullén Gonzalez,atencionaclientes@fotontula.com,776 156 2289
+49,4,null,null,null
+49,7,null,null,null
+49,8,Marco Antonio Marquez Rojas ,marcomr@gcmilenio.com,551 277 6805
+49,9,Mayra Grisel Santos Nava,gris_san2010@hotmail.com,552 986 5650
+49,10,Diego Inocencio Díaz Ferrer,null,558 676 6221
+49,11,null,null,null
+49,12,Ivan Hernandez Varela,servicios@fotontula.com,771 291 3587
+20,14,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+20,13,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+20,1,null,null,null
+20,2,null,null,null
+20,3,null,null,null
+20,5,null,null,null
+20,6,null,null,null
+20,4,null,null,null
+20,7,María José Chamorro García,gerencia.ventas@fotongalerias.com.mx,4521491210
+20,8,null,null,null
+20,9,null,null,null
+20,10,null,null,null
+20,11,null,null,null
+20,12,null,null,null
+21,14,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+21,13,Edgar Federico Fernandez Gutiérrez,edgar.fernandez@xian-motors.com,332 876 3497
+21,1,null,null,null
+21,2,null,null,null
+21,3,null,null,null
+21,5,null,null,null
+21,6,null,null,null
+21,4,null,null,null
+21,7,María José Chamorro García,gerencia.ventas@fotongalerias.com.mx,4521491210
+21,8,null,null,null
+21,9,null,null,null
+21,10,null,null,null
+21,11,null,null,null
+21,12,null,null,null
