@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Cliente;
 use App\Models\Contacto;
 use App\Http\Requests\ClienteRequest;
+use App\Models\DocumentVersion;
+use App\Models\Document;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
 class ClientesController extends Controller
 {
@@ -130,18 +133,63 @@ class ClientesController extends Controller
                 $cliente->direccionesFiscales()->create($direccionFiscal);
             }
 
+            $allowedTypes = [
+                'convocatoria',
+                'bases',
+                'anexos',
+                'acta_junta_aclaraciones',
+                'acta_presentacion_apertura_proposiciones',
+                'acta_fallo',
+                'contrato',
+                'fianza',
+                'acta_entrega',
+                'facturas',
+                'cancelacion_garantia',
+                'otros'
+            ];
+
+            if ($request->hasFile('documents')) {
+
+                foreach ($request->file('documents', []) as $type => $file) {
+                    if (!in_array($type, $allowedTypes)) {
+                        continue;
+                    }
+
+                    if (!$file) continue;
+
+                    $path = $file->store("documents/", 'public');
+
+                    $document = Document::create([
+                        'cliente_id' => $cliente->id,
+                        'type' => $type,
+                        'name' => $file->getClientOriginalName(),
+                        'current_version' => 1,
+                    ]);
+
+                    DocumentVersion::create([
+                        'document_id' => $document->id,
+                        'file_path' => $path,
+                        'version' => 1,
+                    ]);
+                }
+            }
+
             DB::commit();
 
             return response()->json([
                 'message' => 'Cliente creado correctamente',
-                'data' => $cliente
+                'data' => $cliente->load('documents.versions')
             ], 201);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Errores de validación',
+                'errors' => $e->errors()
+            ], 422);
         } catch (\Exception $e) {
-
             DB::rollBack();
 
             return response()->json([
-                'message' => 'Error al crear cliente',
+                'message' => 'Error al crear proyecto',
                 'error' => $e->getMessage()
             ], 500);
         }
@@ -456,18 +504,84 @@ class ClientesController extends Controller
                 );
             }
 
+            $allowedTypes = [
+                'convocatoria',
+                'bases',
+                'anexos',
+                'acta_junta_aclaraciones',
+                'acta_presentacion_apertura_proposiciones',
+                'acta_fallo',
+                'contrato',
+                'fianza',
+                'acta_entrega',
+                'facturas',
+                'cancelacion_garantia',
+                'otros'
+            ];
+
+            if ($request->hasFile('documents')) {
+
+                foreach ($request->file('documents', []) as $type => $file) {
+                    if (!in_array($type, $allowedTypes)) {
+                        continue;
+                    }
+
+                    if (!$file) continue;
+
+                    $document = Document::where('cliente_id', $cliente->id)
+                        ->where('type', $type)
+                        ->first();
+
+                    $path = $file->store("documents/", 'public');
+
+                    if ($document) {
+
+                        $newVersion = $document->current_version + 1;
+
+                        DocumentVersion::create([
+                            'document_id' => $document->id,
+                            'file_path' => $path,
+                            'version' => $newVersion,
+                        ]);
+
+                        $document->update([
+                            'current_version' => $newVersion,
+                            'name' => $file->getClientOriginalName()
+                        ]);
+                    } else {
+
+                        $document = Document::create([
+                            'cliente_id' => $cliente->id,
+                            'type' => $type,
+                            'name' => $file->getClientOriginalName(),
+                            'current_version' => 1,
+                        ]);
+
+                        DocumentVersion::create([
+                            'document_id' => $document->id,
+                            'file_path' => $path,
+                            'version' => 1,
+                        ]);
+                    }
+                }
+            }
+
             DB::commit();
 
             return response()->json([
                 'message' => 'Cliente actualizado correctamente',
-                'data' => $cliente
+                'data' => $cliente->load('documents.versions')
             ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'message' => 'Errores de validación',
+                'errors' => $e->errors()
+            ], 422);
         } catch (\Exception $e) {
-
             DB::rollBack();
 
             return response()->json([
-                'message' => 'Error al actualizar cliente',
+                'message' => 'Error al actualizar proyecto',
                 'error' => $e->getMessage()
             ], 500);
         }

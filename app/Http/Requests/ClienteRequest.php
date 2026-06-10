@@ -42,7 +42,7 @@ class ClienteRequest extends FormRequest
             'plaza' => 'nullable|string|max:255',
             'clasificacion' => 'nullable|string|max:255',
 
-            'estatus' => 'nullable|in:Activo,Desarrollo,Inactivo,Stand By',
+            'estatus' => 'nullable|in:Activo,Desarrollo,Inactivo,Stand By,No Aplica',
             'tipo_negocio' => 'nullable|in:Matriz,Sucursal',
 
             'matriz_id' => 'nullable|exists:cli_clientes,id',
@@ -78,6 +78,9 @@ class ClienteRequest extends FormRequest
             'direccion_fiscal.pais_id' => 'required|exists:cli_paises,id',
             'direccion_fiscal.estado_id' => 'required|exists:cli_estados,id',
             'direccion_fiscal.municipio_id' => 'required|exists:cli_municipios,id',
+
+            'documents' => 'nullable|array',
+            'documents.*' => 'file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,svg',
         ];
     }
 
@@ -140,7 +143,7 @@ class ClienteRequest extends FormRequest
             'clasificacion.string' => 'La clasificación debe ser texto',
             'clasificacion.max' => 'La clasificación no puede superar los 255 caracteres',
 
-            'estatus.in' => 'El estatus debe ser Activo, Desarrollo, Inactivo o Stand By',
+            'estatus.in' => 'El estatus debe ser Activo, Desarrollo, Inactivo o Stand By, No Aplica',
 
             'tipo_negocio.in' => 'El tipo de negocio debe ser Matriz o Sucursal',
 
@@ -213,6 +216,9 @@ class ClienteRequest extends FormRequest
 
             'direccion_fiscal.municipio_id.required' => 'El municipio de la dirección fiscal es obligatorio',
             'direccion_fiscal.municipio_id.exists' => 'El municipio de la dirección fiscal no existe',
+
+            'documents.*.file' => 'Cada documento debe ser un archivo válido',
+            'documents.*.mimes' => 'Cada documento debe ser un archivo de tipo pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, png, svg',
         ];
     }
 }

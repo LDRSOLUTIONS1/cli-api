@@ -146,4 +146,9 @@ class Cliente extends Model
 
         return $query->whereIn('tipo_cliente_id', $tipos);
     }
+
+    public function documents()
+    {
+        return $this->hasMany(Document::class, 'cliente_id');
+    }
 }
