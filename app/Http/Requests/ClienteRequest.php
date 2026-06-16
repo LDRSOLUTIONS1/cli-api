@@ -80,7 +80,9 @@ class ClienteRequest extends FormRequest
             'direccion_fiscal.municipio_id' => 'required|exists:cli_municipios,id',
 
             'documents' => 'nullable|array',
-            'documents.*' => 'file|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,svg',
+            'documents.*' => 'array',
+            'documents.*.*' =>
+            'file|max:20480|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx,jpg,jpeg,png,svg',
         ];
     }
 
@@ -217,8 +219,11 @@ class ClienteRequest extends FormRequest
             'direccion_fiscal.municipio_id.required' => 'El municipio de la dirección fiscal es obligatorio',
             'direccion_fiscal.municipio_id.exists' => 'El municipio de la dirección fiscal no existe',
 
-            'documents.*.file' => 'Cada documento debe ser un archivo válido',
-            'documents.*.mimes' => 'Cada documento debe ser un archivo de tipo pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, png, svg',
+            'documents.array' => 'Los documentos deben ser un arreglo',
+            'documents.*.array' => 'Cada tipo de documento debe ser un arreglo',
+            'documents.*.*.file' => 'Cada documento debe ser un archivo',
+            'documents.*.*.mimes' => 'Cada documento debe ser un archivo de tipo pdf, doc, docx, xls, xlsx, ppt, pptx, jpg, jpeg, png o svg',
+            'documents.*.*.max' => 'Cada documento no puede superar los 5MB',
         ];
     }
 }

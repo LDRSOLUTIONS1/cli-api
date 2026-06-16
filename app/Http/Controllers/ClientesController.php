@@ -294,6 +294,7 @@ class ClientesController extends Controller
             'regionales',
             'modelos',
             'marcas',
+            'documents.versions'
         ])->findOrFail($id);
 
         if ($cliente->tipo_negocio === 'Matriz') {
