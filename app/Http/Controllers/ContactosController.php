@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Contacto;
 use Illuminate\Http\Request;
+use App\Exports\ContactosExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ContactosController extends Controller
 {
@@ -133,6 +135,14 @@ class ContactosController extends Controller
                 'nombre.required' => 'El nombre es obligatorio',
                 'nombre.max'      => 'El nombre no puede tener más de 255 caracteres',
             ]
+        );
+    }
+
+    public function exportExcel()
+    {
+        return Excel::download(
+            new ContactosExport,
+            'contactos.xlsx'
         );
     }
 }
