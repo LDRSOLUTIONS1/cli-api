@@ -9,6 +9,7 @@ use App\Models\DocumentVersion;
 use App\Models\Document;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Storage;
 
 class ClientesController extends Controller
 {
@@ -148,29 +149,34 @@ class ClientesController extends Controller
                 'otros'
             ];
 
-            if ($request->hasFile('documents')) {
+            $allFiles = $request->allFiles();
 
-                foreach ($request->file('documents', []) as $type => $file) {
+            if (!empty($allFiles['documents'])) {
+                foreach ($allFiles['documents'] as $type => $files) {
+
                     if (!in_array($type, $allowedTypes)) {
                         continue;
                     }
 
-                    if (!$file) continue;
+                    $files = is_array($files) ? $files : [$files];
 
-                    $path = $file->store("documents/", 'public');
+                    foreach ($files as $file) {
+                        $path = $file->store('documents', 'public');
 
-                    $document = Document::create([
-                        'cliente_id' => $cliente->id,
-                        'type' => $type,
-                        'name' => $file->getClientOriginalName(),
-                        'current_version' => 1,
-                    ]);
+                        $document = Document::create([
+                            'cliente_id' => $cliente->id,
+                            'type'       => $type,
+                            'name'       => $file->getClientOriginalName(),
+                            'current_version' => 1,
+                        ]);
 
-                    DocumentVersion::create([
-                        'document_id' => $document->id,
-                        'file_path' => $path,
-                        'version' => 1,
-                    ]);
+                        DocumentVersion::create([
+                            'document_id' => $document->id,
+                            'file_path'   => $path,
+                            'version'     => 1,
+                            'original_name' => $file->getClientOriginalName(),
+                        ]);
+                    }
                 }
             }
 
@@ -428,6 +434,7 @@ class ClientesController extends Controller
             'regionales',
             'modelos',
             'marcas',
+            'documents.versions'
         ])->findOrFail($id);
 
         if ($cliente->tipo_negocio === 'Matriz') {
@@ -474,12 +481,12 @@ class ClientesController extends Controller
 
             //MODELOS
             if ($request->has('modelo')) {
-                $cliente->modelos()->sync($request->modelo);
+                $cliente->modelos()->sync($request->modelo ?? []);
             }
 
             //REGIONALES
             if ($request->has('regional')) {
-                $cliente->regionales()->sync($request->regional);
+                $cliente->regionales()->sync($request->regional ?? []);
             }
 
             //MARCAS
@@ -496,7 +503,7 @@ class ClientesController extends Controller
                 );
             }
 
-            //DIRECCION FISCAL
+            //DIRECCION FISCAL21
             if ($request->filled('direccion_fiscal')) {
                 $direccionFiscal = $request->direccion_fiscal;
                 $cliente->direccionesFiscales()->updateOrCreate(
@@ -520,49 +527,70 @@ class ClientesController extends Controller
                 'otros'
             ];
 
-            if ($request->hasFile('documents')) {
+            $allFiles = $request->allFiles();
 
-                foreach ($request->file('documents', []) as $type => $file) {
+            if ($request->has('deleted_version_ids')) {
+                $versionIds = $request->input('deleted_version_ids', []);
+
+                $versionsToDelete = DocumentVersion::whereIn('id', $versionIds)
+                    ->whereHas('document', fn($q) => $q->where('cliente_id', $cliente->id))
+                    ->get();
+
+                foreach ($versionsToDelete as $version) {
+                    Storage::disk('public')->delete($version->file_path);
+                    $version->delete();
+                }
+
+                Document::where('cliente_id', $cliente->id)
+                    ->whereDoesntHave('versions')
+                    ->delete();
+            }
+
+            if (!empty($allFiles['documents'])) {
+                foreach ($allFiles['documents'] as $type => $files) {
+
                     if (!in_array($type, $allowedTypes)) {
                         continue;
                     }
 
-                    if (!$file) continue;
+                    $files = is_array($files) ? $files : [$files];
 
-                    $document = Document::where('cliente_id', $cliente->id)
-                        ->where('type', $type)
-                        ->first();
+                    foreach ($files as $file) {
 
-                    $path = $file->store("documents/", 'public');
+                        $path = $file->store('documents', 'public');
 
-                    if ($document) {
+                        $document = Document::firstOrCreate(
+                            [
+                                'cliente_id' => $cliente->id,
+                                'type'       => $type,
+                            ],
+                            [
+                                'name'            => $file->getClientOriginalName(),
+                                'current_version' => 1,
+                            ]
+                        );
 
-                        $newVersion = $document->current_version + 1;
+                        if (!$document->wasRecentlyCreated) {
+                            $newVersion = $document->versions()->max('version') + 1;
+                            $document->update([
+                                'name'            => $file->getClientOriginalName(),
+                                'current_version' => $newVersion,
+                            ]);
 
-                        DocumentVersion::create([
-                            'document_id' => $document->id,
-                            'file_path' => $path,
-                            'version' => $newVersion,
-                        ]);
-
-                        $document->update([
-                            'current_version' => $newVersion,
-                            'name' => $file->getClientOriginalName()
-                        ]);
-                    } else {
-
-                        $document = Document::create([
-                            'cliente_id' => $cliente->id,
-                            'type' => $type,
-                            'name' => $file->getClientOriginalName(),
-                            'current_version' => 1,
-                        ]);
-
-                        DocumentVersion::create([
-                            'document_id' => $document->id,
-                            'file_path' => $path,
-                            'version' => 1,
-                        ]);
+                            DocumentVersion::create([
+                                'document_id' => $document->id,
+                                'file_path'   => $path,
+                                'version'     => $newVersion,
+                                'original_name' => $file->getClientOriginalName(),
+                            ]);
+                        } else {
+                            DocumentVersion::create([
+                                'document_id' => $document->id,
+                                'file_path'   => $path,
+                                'version'     => 1,
+                                'original_name' => $file->getClientOriginalName(),
+                            ]);
+                        }
                     }
                 }
             }
@@ -571,19 +599,19 @@ class ClientesController extends Controller
 
             return response()->json([
                 'message' => 'Cliente actualizado correctamente',
-                'data' => $cliente->load('documents.versions')
+                'data'    => $cliente->load('documents.versions')
             ]);
         } catch (ValidationException $e) {
             return response()->json([
                 'message' => 'Errores de validación',
-                'errors' => $e->errors()
+                'errors'  => $e->errors()
             ], 422);
         } catch (\Exception $e) {
             DB::rollBack();
 
             return response()->json([
                 'message' => 'Error al actualizar proyecto',
-                'error' => $e->getMessage()
+                'error'   => $e->getMessage()
             ], 500);
         }
     }

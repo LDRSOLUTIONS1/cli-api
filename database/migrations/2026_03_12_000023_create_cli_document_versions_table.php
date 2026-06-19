@@ -14,6 +14,7 @@ return new class extends Migration {
 
             $table->string('file_path');
             $table->integer('version');
+            $table->string('original_name');
 
             $table->tinyInteger('estado')
                 ->default(2)

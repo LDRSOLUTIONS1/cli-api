@@ -53,4 +53,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/clientesPorTipo', [GraficasController::class, 'clientesPorTipo']);
 
+    Route::post('/clientesStore', [ClientesController::class, 'store']);
+    Route::post('/clientesUpdate/{id}', [ClientesController::class, 'update']);
 });

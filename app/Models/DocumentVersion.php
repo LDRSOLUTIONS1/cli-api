@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class DocumentVersion extends Model
 {
     protected $table = 'cli_document_versions';
-    
+
     protected $fillable = [
         'document_id',
         'file_path',
-        'version'
+        'version',
+        'original_name',
     ];
 
     protected $hidden = [
