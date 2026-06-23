@@ -31,11 +31,11 @@ class ContactosImport implements ToCollection, WithHeadingRow, SkipsOnError
 
             $nombre = trim($row['nombre'] ?? '');
 
-            if (empty($nombre)) {
-                $this->errores[] =
-                    "Fila {$fila}: El nombre es obligatorio.";
-                continue;
-            }
+            // if (empty($nombre)) {
+            //     $this->errores[] =
+            //         "Fila {$fila}: El nombre es obligatorio.";
+            //     continue;
+            // }
 
             if (!$clienteId) {
                 $this->errores[] =
