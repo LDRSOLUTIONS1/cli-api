@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Contacto;
 use Illuminate\Http\Request;
 use App\Exports\ContactosExport;
+use App\Imports\ContactosImport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ContactosController extends Controller
@@ -23,7 +24,6 @@ class ContactosController extends Controller
                 'correo',
                 'extension',
                 'telefono',
-                'estatus',
                 'fecha_registro',
                 'estado',
             )
@@ -36,11 +36,11 @@ class ContactosController extends Controller
                     'distribuidor' => $contacto->cliente?->nombre_comercial ?? $contacto->cliente?->razon_social,
                     'distribuidor_id' => $contacto->distribuidor_id,
                     'puesto' => $contacto->puesto?->nombre,
+                    'puesto_id' => $contacto->puesto_id,
                     'nombre' => $contacto->nombre,
                     'correo' => $contacto->correo,
                     'extension' => $contacto->extension,
                     'telefono' => $contacto->telefono,
-                    'estatus' => $contacto->estatus,
                     'fecha_registro' => $contacto->fecha_registro,
                     'estado' => $contacto->estado,
                 ];
@@ -75,7 +75,6 @@ class ContactosController extends Controller
                 'correo',
                 'extension',
                 'telefono',
-                'estatus',
                 'fecha_registro',
                 'estado',
             )
@@ -144,5 +143,27 @@ class ContactosController extends Controller
             new ContactosExport,
             'contactos.xlsx'
         );
+    }
+
+    public function importExcel(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xls,xlsx|max:5120',
+        ]);
+
+        $import = new ContactosImport();
+
+        Excel::import($import, $request->file('file'));
+
+        $errores = $import->getErrores();
+        $actualizados = $import->getActualizados();
+        $creados = $import->getCreados();
+
+        return response()->json([
+            'message'     => "Se actualizaron {$actualizados} y se crearon {$creados} contacto(s)",
+            'actualizados' => $actualizados,
+            'creados'     => $creados,
+            'errores'     => $errores,
+        ], 200);
     }
 }

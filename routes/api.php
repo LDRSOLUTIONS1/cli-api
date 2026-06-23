@@ -57,4 +57,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/clientesUpdate/{id}', [ClientesController::class, 'update']);
 
     Route::get('/contactos/export/excel', [ContactosController::class, 'exportExcel']);
+    Route::post('/contactos/import/excel', [ContactosController::class, 'importExcel']);
 });
