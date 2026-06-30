@@ -35,8 +35,10 @@ class Cliente extends Model
         'tipo_negocio',
         'telefono',
         'telefono_alt',
+        'no_licitacion',
+        'no_contrato',
         'fecha_registro',
-        'estado'
+        'estado',
     ];
 
     // Una sucursal pertenece a una matriz
